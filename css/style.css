@@ -517,8 +517,8 @@ body {
   }
   
   .hero-profile-img {
-    width: 150px;
-    height: 150px;
+    width: 180px;
+    height: 180px;
   }
   
   .hero-name {
@@ -537,23 +537,26 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 12px 16px;
-    gap: 12px;
+    padding: 10px 12px;
+    gap: 10px;
   }
   
   .nav-brand {
-    font-size: 1rem;
+    font-size: 0.95rem;
     order: 1;
+    white-space: nowrap;
   }
   
   .nav-actions {
     justify-content: flex-end;
-    gap: 8px !important;
+    gap: 6px !important;
     order: 2;
   }
   
   .nav-actions a, .nav-actions button {
     white-space: nowrap;
+    font-size: 0.75rem !important;
+    padding: 6px 10px !important;
   }
   
   .nav-links {
