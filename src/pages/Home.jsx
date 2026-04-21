@@ -39,7 +39,7 @@ export default function Home() {
                 Gemini/OpenAI LLM model Training, Javascript, React.js, Node.js, Php, ASP.NET, MySQL, and beyond.</p>
             <div className="btn-group">
                 <Link to="/projects" className="btn btn-primary">Browse Projects</Link>
-                <a  href="#experience" className="btn btn-outline">Explore Experience</a>
+                <a href="#" onClick={(e) => { e.preventDefault(); document.getElementById('experience')?.scrollIntoView({behavior:'smooth'}); }} className="btn btn-outline" style={{cursor: 'pointer'}}>Explore Experience</a>
                 <a  href="/asset/shihabCV.pdf" target="_blank" className="btn btn-outline" style={{border: '1px solid white'}}><i
                         className="fas fa-download"></i> Download Resume</a>
             </div>
@@ -413,7 +413,21 @@ export default function Home() {
                     </div>
                 </div>
 
-
+                {/* Project 21 */}
+                <div className="data-row">
+                    <div className="row-number">21</div>
+                    <div className="row-content">
+                        <h3><a href="https://locusservices.com.au/" target="_blank"
+                                style={{color: 'inherit', textDecoration: 'none'}}>Locus Services <i
+                                    className="fas fa-external-link-alt" style={{fontSize: '0.7em'}}></i></a></h3>
+                        <p className="meta">WordPress • Cyber Security • Server Admin</p>
+                        <p className="desc">Executed full WP theme & plugin customization and performed a deep cybersecurity recovery, eradicating massive backdoors, dropper malware, and over 19,000+ SEO spam posts.</p>
+                        <div className="tags">
+                            <span className="tag tag-orange">SECURITY</span>
+                            <span className="tag tag-pink">WORDPRESS</span>
+                        </div>
+                    </div>
+                </div>
 
             </div>
 
@@ -818,8 +832,6 @@ export default function Home() {
         </div>
         <p>&copy; 2024 Mehedi Hasan Shihab. All rights reserved.</p>
     </footer>
-
-    `n    
 
     </>
   );

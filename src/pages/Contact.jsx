@@ -50,8 +50,6 @@ export default function Contact() {
         <p>&copy; 2024 Mehedi Hasan Shihab. All rights reserved.</p>
     </footer>
 
-`n    
-
     </>
   );
 }

@@ -4,25 +4,26 @@ import Navbar from "../components/Navbar";
 
 export default function Projects() {
   useEffect(() => {
-    window.toggleAccordion = function(element) {
-      const row = element.parentElement;
-      const details = element.nextElementSibling;
-      const icon = element.querySelector('.col-toggle i');
-      document.querySelectorAll('.project-row.active').forEach(item => {
-          if(item !== row) {
-              item.classList.remove('active');
-              item.querySelector('.project-details').style.maxHeight = null;
-              item.querySelector('.col-toggle i').classList.replace('fa-chevron-up', 'fa-chevron-down');
+    // shihab_toggleAccordion: accordion open/close handler for sshihabb007's projects list
+    window.shihab_toggleAccordion = function(sshihabb007_element) {
+      const mehedi_row = sshihabb007_element.parentElement;
+      const shihab_details = sshihabb007_element.nextElementSibling;
+      const sshihabb007_icon = sshihabb007_element.querySelector('.col-toggle i');
+      document.querySelectorAll('.project-row.active').forEach(mehedi_item => {
+          if(mehedi_item !== mehedi_row) {
+              mehedi_item.classList.remove('active');
+              mehedi_item.querySelector('.project-details').style.maxHeight = null;
+              mehedi_item.querySelector('.col-toggle i').classList.replace('fa-chevron-up', 'fa-chevron-down');
           }
       });
-      if (row.classList.contains('active')) {
-          row.classList.remove('active');
-          details.style.maxHeight = null;
-          icon.classList.replace('fa-chevron-up', 'fa-chevron-down');
+      if (mehedi_row.classList.contains('active')) {
+          mehedi_row.classList.remove('active');
+          shihab_details.style.maxHeight = null;
+          sshihabb007_icon.classList.replace('fa-chevron-up', 'fa-chevron-down');
       } else {
-          row.classList.add('active');
-          details.style.maxHeight = details.scrollHeight + "px";
-          icon.classList.replace('fa-chevron-down', 'fa-chevron-up');
+          mehedi_row.classList.add('active');
+          shihab_details.style.maxHeight = shihab_details.scrollHeight + "px";
+          sshihabb007_icon.classList.replace('fa-chevron-down', 'fa-chevron-up');
       }
     };
   }, []);
@@ -51,7 +52,7 @@ export default function Projects() {
 
         {/* Project 1 */}
         <div className="project-row">
-            <div className="project-summary" onClick={(e) => window.toggleAccordion(e.currentTarget)}>
+            <div className="project-summary" onClick={(e) => window.shihab_toggleAccordion(e.currentTarget)}>
                 <div className="col-title">
                     <h3>ReactJs Online SmartPhone Shop</h3>
                     <div className="tech-stack">React.js • JavaScript</div>
@@ -83,7 +84,7 @@ export default function Projects() {
             </div>
         </div>{/* Project 2 */}
         <div className="project-row">
-            <div className="project-summary" onClick={(e) => window.toggleAccordion(e.currentTarget)}>
+            <div className="project-summary" onClick={(e) => window.shihab_toggleAccordion(e.currentTarget)}>
                 <div className="col-title">
                     <h3>SHIHAB-SmartBook</h3>
                     <div className="tech-stack">Java</div>
@@ -117,7 +118,7 @@ export default function Projects() {
 
         {/* Project 3 */}
         <div className="project-row">
-            <div className="project-summary" onClick={(e) => window.toggleAccordion(e.currentTarget)}>
+            <div className="project-summary" onClick={(e) => window.shihab_toggleAccordion(e.currentTarget)}>
                 <div className="col-title">
                     <h3>AIUB Online Forum</h3>
                     <div className="tech-stack">ASP.NET • SQL Server</div>
@@ -152,7 +153,7 @@ export default function Projects() {
 
         {/* Project 4 */}
         <div className="project-row">
-            <div className="project-summary" onClick={(e) => window.toggleAccordion(e.currentTarget)}>
+            <div className="project-summary" onClick={(e) => window.shihab_toggleAccordion(e.currentTarget)}>
                 <div className="col-title">
                     <h3>Online Smartphone Shop</h3>
                     <div className="tech-stack">PHP • JavaScript • AJAX • jQuery</div>
@@ -187,7 +188,7 @@ export default function Projects() {
 
         {/* Project 5 */}
         <div className="project-row">
-            <div className="project-summary" onClick={(e) => window.toggleAccordion(e.currentTarget)}>
+            <div className="project-summary" onClick={(e) => window.shihab_toggleAccordion(e.currentTarget)}>
                 <div className="col-title">
                     <h3>AI English Test Assistance</h3>
                     <div className="tech-stack">Node.js • WebSockets • Vertex AI</div>
@@ -222,7 +223,7 @@ export default function Projects() {
 
         {/* Project 6 */}
         <div className="project-row">
-            <div className="project-summary" onClick={(e) => window.toggleAccordion(e.currentTarget)}>
+            <div className="project-summary" onClick={(e) => window.shihab_toggleAccordion(e.currentTarget)}>
                 <div className="col-title">
                     <h3>Hospital Management System</h3>
                     <div className="tech-stack">Oracle PL/SQL • C#</div>
@@ -257,7 +258,7 @@ export default function Projects() {
 
         {/* Project 7 */}
         <div className="project-row">
-            <div className="project-summary" onClick={(e) => window.toggleAccordion(e.currentTarget)}>
+            <div className="project-summary" onClick={(e) => window.shihab_toggleAccordion(e.currentTarget)}>
                 <div className="col-title">
                     <h3>Inventory Management System</h3>
                     <div className="tech-stack">C# • .NET</div>
@@ -292,7 +293,7 @@ export default function Projects() {
 
         {/* Project 8 */}
         <div className="project-row">
-            <div className="project-summary" onClick={(e) => window.toggleAccordion(e.currentTarget)}>
+            <div className="project-summary" onClick={(e) => window.shihab_toggleAccordion(e.currentTarget)}>
                 <div className="col-title">
                     <h3>ASP.NET Projects Demo</h3>
                     <div className="tech-stack">ASP.NET • HTML • C#</div>
@@ -326,7 +327,7 @@ export default function Projects() {
 
         {/* Project 9 */}
         <div className="project-row">
-            <div className="project-summary" onClick={(e) => window.toggleAccordion(e.currentTarget)}>
+            <div className="project-summary" onClick={(e) => window.shihab_toggleAccordion(e.currentTarget)}>
                 <div className="col-title">
                     <h3>WAI APAC Awards Rasa Chatbot</h3>
                     <div className="tech-stack">Python • Rasa 2.1.2 • TensorFlow</div>
@@ -361,7 +362,7 @@ export default function Projects() {
 
         {/* Project 10 */}
         <div className="project-row">
-            <div className="project-summary" onClick={(e) => window.toggleAccordion(e.currentTarget)}>
+            <div className="project-summary" onClick={(e) => window.shihab_toggleAccordion(e.currentTarget)}>
                 <div className="col-title">
                     <h3>Budget Shop & Care Connects</h3>
                     <div className="tech-stack">WordPress • PHP • Bootstrap</div>
@@ -396,7 +397,7 @@ export default function Projects() {
 
         {/* Project 11 */}
         <div className="project-row">
-            <div className="project-summary" onClick={(e) => window.toggleAccordion(e.currentTarget)}>
+            <div className="project-summary" onClick={(e) => window.shihab_toggleAccordion(e.currentTarget)}>
                 <div className="col-title">
                     <h3>Shihab Site Auditor Pro</h3>
                     <div className="tech-stack">JavaScript • HTML • CSS</div>
@@ -430,7 +431,7 @@ export default function Projects() {
 
         {/* Project 12 */}
         <div className="project-row">
-            <div className="project-summary" onClick={(e) => window.toggleAccordion(e.currentTarget)}>
+            <div className="project-summary" onClick={(e) => window.shihab_toggleAccordion(e.currentTarget)}>
                 <div className="col-title">
                     <h3>SITE-ANALYTICS-BY-SHIHAB</h3>
                     <div className="tech-stack">PHP • MySQL</div>
@@ -464,7 +465,7 @@ export default function Projects() {
 
         {/* Project 13 */}
         <div className="project-row">
-            <div className="project-summary" onClick={(e) => window.toggleAccordion(e.currentTarget)}>
+            <div className="project-summary" onClick={(e) => window.shihab_toggleAccordion(e.currentTarget)}>
                 <div className="col-title">
                     <h3>PC Power Calculator</h3>
                     <div className="tech-stack">HTML • JavaScript</div>
@@ -498,7 +499,7 @@ export default function Projects() {
 
         {/* Project 14 */}
         <div className="project-row">
-            <div className="project-summary" onClick={(e) => window.toggleAccordion(e.currentTarget)}>
+            <div className="project-summary" onClick={(e) => window.shihab_toggleAccordion(e.currentTarget)}>
                 <div className="col-title">
                     <h3>TAX-Calculator</h3>
                     <div className="tech-stack">HTML • JavaScript</div>
@@ -532,7 +533,7 @@ export default function Projects() {
 
         {/* Project 15 */}
         <div className="project-row">
-            <div className="project-summary" onClick={(e) => window.toggleAccordion(e.currentTarget)}>
+            <div className="project-summary" onClick={(e) => window.shihab_toggleAccordion(e.currentTarget)}>
                 <div className="col-title">
                     <h3>google-photos-album-url-fetch</h3>
                     <div className="tech-stack">Node.js • NPM</div>
@@ -566,7 +567,7 @@ export default function Projects() {
 
         {/* Project 16 */}
         <div className="project-row">
-            <div className="project-summary" onClick={(e) => window.toggleAccordion(e.currentTarget)}>
+            <div className="project-summary" onClick={(e) => window.shihab_toggleAccordion(e.currentTarget)}>
                 <div className="col-title">
                     <h3>AIUB-Grading-System</h3>
                     <div className="tech-stack">C++</div>
@@ -600,7 +601,7 @@ export default function Projects() {
 
         {/* Project 17 */}
         <div className="project-row">
-            <div className="project-summary" onClick={(e) => window.toggleAccordion(e.currentTarget)}>
+            <div className="project-summary" onClick={(e) => window.shihab_toggleAccordion(e.currentTarget)}>
                 <div className="col-title">
                     <h3>Hypex Web Platform & Subnetworks</h3>
                     <div className="tech-stack">WordPress • PHP • Custom Plugins</div>
@@ -634,7 +635,7 @@ export default function Projects() {
 
         {/* Project 18 */}
         <div className="project-row">
-            <div className="project-summary" onClick={(e) => window.toggleAccordion(e.currentTarget)}>
+            <div className="project-summary" onClick={(e) => window.shihab_toggleAccordion(e.currentTarget)}>
                 <div className="col-title">
                     <h3>BERI Bangladesh</h3>
                     <div className="tech-stack">WordPress • PHP • UI/UX Design</div>
@@ -668,7 +669,7 @@ export default function Projects() {
 
         {/* Project 19 */}
         <div className="project-row">
-            <div className="project-summary" onClick={(e) => window.toggleAccordion(e.currentTarget)}>
+            <div className="project-summary" onClick={(e) => window.shihab_toggleAccordion(e.currentTarget)}>
                 <div className="col-title">
                     <h3>MAC Technology Australia</h3>
                     <div className="tech-stack">WordPress • PHP • UI/UX Design</div>
@@ -692,15 +693,46 @@ export default function Projects() {
                     <br />
                     <h4>Key Features & Responsibilities</h4>
                     <ul>
-                        <li><strong>Complete WordPress Build:</strong> Architected the entire CMS structure, handling theme implementation, responsiveness tuning, and page hierarchy.</li>
-                        <li><strong>Corporate Branding & UI:</strong> Delivered customized web design assets and CSS integrations reflecting MAC Technology's brand guidelines.</li>
-                        <li><strong>Performance & PHP Integrations:</strong> Maintained underlying PHP infrastructure to ensure rapid load times, contact form security, and enterprise-level reliability.</li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        
+        {/* Project 20 */}
+        <div className="project-row">
+            <div className="project-summary" onClick={(e) => window.shihab_toggleAccordion(e.currentTarget)}>
+                <div className="col-title">
+                    <h3>Locus Services</h3>
+                    <div className="tech-stack">WordPress • Cyber Security • PHP</div>
+                </div>
+                <div className="col-tags">
+                    <span className="tag tag-pink">WORDPRESS</span>
+                    <span className="tag tag-orange">SECURITY</span>
+                </div>
+                <div className="col-type">Production Backup & Fix</div>
+                <div className="col-link">
+                    <a href="https://locusservices.com.au/" target="_blank" onClick={(e) => e.stopPropagation()}><i className="fas fa-globe"></i> Visit Website</a>
+                </div>
+                <div className="col-toggle">
+                    <i className="fas fa-chevron-down"></i>
+                </div>
+            </div>
+            <div className="project-details">
+                <div className="project-details-content">
+                    <h4>Overview</h4>
+                    <p>Performed extensive WP theme and plugin customization. Most critically, orchestrated a full cybersecurity recovery of the platform after detecting severe malware backdoors and SEO spam injections orchestrated by black-hat hackers.</p>
+                    <br />
+                    <h4>Key Security Recovery & Implementations</h4>
+                    <ul>
+                        <li><strong>Removed "Tiny File Manager" Backdoors:</strong> Identified and purged disguised remote-access scripts (<code>index-info.php</code>, <code>functions-dns.php</code>, <code>functions-character.php</code>) left by attackers.</li>
+                        <li><strong>Eradicated PHP "Dropper" Malware:</strong> Tracked down and permanently deleted obfuscated payload generators (e.g., <code>scorpion.php</code>, <code>gorilla.php</code>) hidden deep in the <code>wp-content/uploads/</code> directories.</li>
+                        <li><strong>Cleaned SEO Spam Injection & Restored Dashboard:</strong> Excised a malicious code block hooked into <code>pre_get_posts</code> inside the Hello Elementor functions.php file, which deliberately hid spam pages from the WordPress Admin dashboard. Eliminated over 19,000+ generated spam blog posts.</li>
+                        <li><strong>Deep System & User Audit:</strong> Ran database queries to ensure <code>Locusadmin</code> remained the sole authorized user. Validated the integrity of core files (<code>wp-config.php</code>, <code>.htaccess</code>) and actively scanned the entire WP installation for eval/base64 malware signatures.</li>
+                        <li><strong>Fixed WPvivid Backup Plugin Crash:</strong> Adjusted the native <code>php.ini</code> server configuration to uncover the native zip extension, circumventing PclZip memory crashes during large 143MB database extraction requests.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
     </main>
 
@@ -712,9 +744,6 @@ export default function Projects() {
         <p>&copy; 2024 Mehedi Hasan Shihab. All rights reserved.</p>
     </footer>
 
-    {/* Accordion Script */}
-    
-`n    
 
     </>
   );
