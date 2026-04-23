@@ -7,7 +7,8 @@
   --text-main: #F8FAFC;
   --text-muted: #94A3B8;
 
-  --brand-gradient: linear-gradient(135deg, #A855F7 0%, #3B82F6 100%);
+  --primary-color: #3B82F6;
+  --brand-gradient: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-color) 100%);
 
   --tag-green-bg: rgba(16, 185, 129, 0.1);
   --tag-green-text: #10B981;
@@ -39,7 +40,7 @@ body.light-mode {
   --text-main: #36312B;
   --text-muted: #736C61;
 
-  --brand-gradient: linear-gradient(135deg, #9333EA 0%, #2563EB 100%);
+  --brand-gradient: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-color) 100%);
 
   --hero-glow-1: rgba(168, 85, 247, 0.15);
   --hero-glow-2: rgba(59, 130, 246, 0.10);
@@ -102,7 +103,7 @@ body {
 
 .nav-links a:hover,
 .nav-links a.active {
-  color: #A855F7;
+  color: var(--primary-color);
 }
 
 /* Page Header (for inner pages like projects.html) */
@@ -341,7 +342,7 @@ body {
 
 .stat-box h2 {
   font-size: 1.8rem;
-  color: #3B82F6;
+  color: var(--primary-color);
   margin-bottom: 5px;
 }
 
@@ -397,7 +398,7 @@ body {
 }
 
 .data-row:hover {
-  border-color: #3B82F6;
+  border-color: var(--primary-color);
 }
 
 /* Number badge equivalent in screenshot 1 */
@@ -481,7 +482,7 @@ body {
 }
 
 .sidebar-panel h3 i {
-  color: #3B82F6;
+  color: var(--primary-color);
 }
 
 .pill-tags {
@@ -502,7 +503,7 @@ body {
 
 .pill:hover {
   color: var(--text-main);
-  border-color: #3B82F6;
+  border-color: var(--primary-color);
   background: var(--bg-hover);
 }
 
@@ -741,7 +742,7 @@ body {
 
 .project-row:hover,
 .project-row.active {
-  border-color: #3B82F6;
+  border-color: var(--primary-color);
   background: var(--bg-hover);
 }
 
@@ -936,7 +937,7 @@ body {
 
 .project-row:hover,
 .project-row.active {
-  border-color: #3B82F6;
+  border-color: var(--primary-color);
   background: var(--bg-hover);
 }
 
@@ -1129,16 +1130,47 @@ html, body, a, button {
 .cursor-dot {
   width: 8px;
   height: 8px;
-  background-color: #00a8ff;
+  background-color: var(--text-main);
   transition: opacity 0.15s ease-out;
 }
 
 .cursor-outline {
   width: 34px;
   height: 34px;
-  border: 2px solid #00599c;
+  border: 2px solid var(--text-main);
   /* Add left and top to transition for the lag effect when using left/top in JS */
   transition: transform 0.15s ease-out, left 0.15s ease-out, top 0.15s ease-out, background-color 0.15s ease-out;
+}
+
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--text-main);
+  color: var(--bg-dark);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.back-to-top:hover {
+  transform: translateY(-5px);
 }
 
 @media (pointer: coarse) {
@@ -1147,5 +1179,79 @@ html, body, a, button {
   }
   .cursor-dot, .cursor-outline {
     display: none !important;
+  }
+}
+
+/* Color Switcher */
+.color-switcher-container {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.color-palette {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  padding: 10px 15px;
+  border-radius: 30px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+}
+.color-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.color-btn:hover {
+  transform: scale(1.1);
+}
+.color-btn.active {
+  outline: 2px solid var(--bg-card);
+  box-shadow: 0 0 0 4px var(--primary-color);
+}
+.switcher-controls {
+  display: flex;
+  gap: 10px;
+  padding-left: 10px;
+}
+.icon-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+.icon-btn:hover {
+  background: var(--bg-hover);
+  color: var(--primary-color);
+  transform: translateY(-2px);
+}
+@media (max-width: 768px) {
+  .color-switcher-container {
+    bottom: 20px;
+    left: 20px;
+  }
+  .color-palette {
+    flex-wrap: wrap;
+    max-width: 150px;
+    justify-content: center;
+    border-radius: 15px;
+    padding: 15px;
   }
 }
