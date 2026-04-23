@@ -682,7 +682,7 @@ body {
 /* Small Screens */
 @media (max-width: 480px) {
   .stats-banner {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .btn-group {
