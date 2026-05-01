@@ -2,45 +2,67 @@
 <html lang="en">
 
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3JN6PYW17Z"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-3JN6PYW17Z');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mehedi Hasan Shihab | Portfolio</title>
+    <title>Mehedi Hasan Shihab | Web & Software Developer</title>
+    <meta name="description"
+        content="Portfolio of Mehedi Hasan Shihab. Senior Software Engineer at BERI with expertise in Web Development, AI, and IT Support. View my projects and skills.">
+    <link rel="canonical" href="https://sshihabb007.github.io/">
+    <meta property="og:title" content="Mehedi Hasan Shihab Portfolio">
+    <meta property="og:description"
+        content="Explore the projects of Mehedi Hasan Shihab in React, Javascript, Node.js, php, AI based platform, C#, and AI research.">
+    <meta property="og:image" content="https://sshihabb007.github.io/asset/Shihab.jpg">
+    <link rel="icon" type="image/png" href="asset/fav.png">
     <link rel="stylesheet" href="css/style.css?v=2.0">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Person",
+      "name": "Mehedi Hasan Shihab",
+      "url": "https://sshihabb007.github.io/",
+      "image": "https://sshihabb007.github.io/asset/Shihab.jpg",
+      "sameAs": [
+        "https://www.linkedin.com/in/mehedi-hasan-shihab",
+        "https://github.com/sshihabb007",
+        "https://www.facebook.com/sshihabb007/"
+      ],
+      "jobTitle": "Senior Software Engineer",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "BERI"
+      }
+    }
+    </script>
 </head>
 
-<body>
+<body id="sshihabb007-body" class="mehedi-protected">
 
     <!-- Navbar -->
-    <nav class="navbar">
-        <a href="./" class="nav-brand" style="text-decoration: none; color: inherit;"><span>Mehedi
-                Hasan</span>Shihab</a>
-        <div class="nav-links">
-            <a href="./">Home</a>
-            <a href="front/projects">Notable Projects</a>
-            <a href="./#experience">Experience</a>
-        </div>
-        <div class="nav-actions" style="display: flex; align-items: center; gap: 12px;">
-            <button id="theme-toggle" class="btn btn-outline"
-                style="font-size: 0.9rem; padding: 8px 12px; border-color: var(--border-color); color: var(--text-main); background: transparent; cursor: pointer; border-radius: 4px;"
-                aria-label="Toggle Theme"><i class="fas fa-moon"></i></button>
-            <a href="front/contact" class="btn btn-outline" style="font-size: 0.9rem; padding: 8px 16px;"><i
-                    class="fas fa-envelope"></i> Contact Me</a>
-        </div>
-    </nav>
+    <div id="site-header"></div>
 
     <!-- Hero -->
     <header class="hero">
         <div class="hero-content">
-            <div class="hero-profile-wrapper">
-                <img src="asset/Shihab.jpg" alt="Mehedi Hasan Shihab" class="hero-profile-img">
+            <div class="hero-profile-wrapper" data-aos="fade-up">
+                <img src="asset/Shihab.jpg" alt="Mehedi Hasan Shihab - Senior Software Engineer at BERI"
+                    class="hero-profile-img">
                 <div class="hero-profile-info">
-                    <h2 class="hero-name"><a href="https://www.linkedin.com/in/mehedi-hasan-shihab-30a445b6/"
-                            target="_blank" style="color: inherit; text-decoration: none;">Mehedi Hasan Shihab</a></h2>
-                    <p class="hero-subtitle">Sr. Software Engineer | Full-Stack Developer | AI Developer</p>
+                    <h1 class="hero-name"><a href="https://www.linkedin.com/in/mehedi-hasan-shihab" target="_blank"
+                            style="color: inherit; text-decoration: none;">Mehedi Hasan Shihab</a></h1>
+                    <p class="hero-subtitle">Sr. Software Engineer | Full-Stack Developer | BERI</p>
                     <div class="social-btn-group">
-                        <a href="https://www.linkedin.com/in/mehedi-hasan-shihab-30a445b6/" target="_blank"
+                        <a href="https://www.linkedin.com/in/mehedi-hasan-shihab" target="_blank"
                             class="btn-social btn-linkedin">LINKEDIN</a>
                         <a href="https://github.com/sshihabb007" target="_blank" class="btn-social btn-github"><i
                                 class="fab fa-github"></i> GITHUB</a>
@@ -54,22 +76,25 @@
             </div>
             <hr class="hero-divider" style="margin-bottom: 40px;">
 
-            <h1>Track What Matters in My Output</h1>
-            <p>A hard-working, fast learner and self-motivated Web & Software Developer.Exploring Web Development,
-                Gemini/OpenAI LLM model Training, Javascript, React.js, Node.js, Php, ASP.NET, MySQL, and beyond.</p>
-            <div class="btn-group">
-                <a href="front/projects" class="btn btn-primary">Browse Projects</a>
-                <a href="#experience" class="btn btn-outline">Explore Experience</a>
-                <a href="asset/shihabCV.pdf" target="_blank" class="btn btn-outline" style="border: 1px solid white;"><i
-                        class="fas fa-download"></i> Download Resume</a>
+            <div data-aos="fade-up" data-aos-delay="200">
+                <h2>Track What Matters in My Output</h2>
+                <p>A hard-working, fast learner and self-motivated Web & Software Developer.Exploring Web Development,
+                    Gemini/OpenAI LLM model Training, Javascript, React.js, Node.js, Php, ASP.NET, MySQL, and beyond.
+                </p>
+                <div class="btn-group">
+                    <a href="front/projects" class="btn btn-primary">Browse Projects</a>
+                    <a href="#experience" class="btn btn-outline">Explore Experience</a>
+                    <a href="asset/shihabCV.pdf" target="_blank" class="btn btn-outline"
+                        style="border: 1px solid white;"><i class="fas fa-download"></i> Download Resume</a>
+                </div>
             </div>
         </div>
     </header>
 
     <!-- Stats Banner -->
-    <section class="stats-banner">
+    <section class="stats-banner" data-aos="fade-up">
         <div class="stat-box">
-            <h2>19</h2>
+            <h2>18+</h2>
             <p>Notable<br>Projects</p>
         </div>
         <div class="stat-box">
@@ -100,7 +125,7 @@
 
             <div class="data-list" id="projects">
                 <!-- Project 1 -->
-                <div class="data-row">
+                <div class="data-row" data-aos="fade-right">
                     <div class="row-number">1</div>
                     <div class="row-content">
                         <h3><a href="https://github.com/sshihabb007/ReactJs---Online-SmartPhone-Shop" target="_blank"
@@ -116,7 +141,7 @@
                         </div>
                     </div>
                 </div><!-- Project 2 -->
-                <div class="data-row">
+                <div class="data-row" data-aos="fade-right">
                     <div class="row-number">2</div>
                     <div class="row-content">
                         <h3><a href="https://github.com/sshihabb007/SHIHAB-SmartBook" target="_blank"
@@ -132,7 +157,7 @@
                 </div>
 
                 <!-- Project 3 -->
-                <div class="data-row">
+                <div class="data-row" data-aos="fade-right">
                     <div class="row-number">3</div>
                     <div class="row-content">
                         <h3><a href="https://github.com/sshihabb007/AIUB-Online-Forum-ASP.NET-" target="_blank"
@@ -149,7 +174,7 @@
                 </div>
 
                 <!-- Project 4 -->
-                <div class="data-row">
+                <div class="data-row" data-aos="fade-right">
                     <div class="row-number">4</div>
                     <div class="row-content">
                         <h3><a href="https://github.com/sshihabb007/Online-Smartphone-Shop-PhP-JAVASCRIPT-AJAX-Jquery-CSS-"
@@ -166,58 +191,8 @@
                 </div>
 
                 <!-- Project 5 -->
-                <div class="data-row">
+                <div class="data-row" data-aos="fade-right">
                     <div class="row-number">5</div>
-                    <div class="row-content">
-                        <h3><a href="https://github.com/sshihabb007/Hospital-Management-System-by-Oracle-10G-and-PLSQL"
-                                target="_blank" style="color: inherit; text-decoration: none;">Hospital Management
-                                System <i class="fas fa-external-link-alt" style="font-size: 0.7em;"></i></a></h3>
-                        <p class="meta">Oracle PL/SQL • C#</p>
-                        <p class="desc">A robust C#-based desktop application. Custom triggers, procedures, & functions
-                            were developed for a comprehensive database ecosystem.</p>
-                        <div class="tags">
-                            <span class="tag tag-purple">DESKTOP APP</span>
-                            <span class="tag tag-green">DATABASE MANAGEMENT</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 6 -->
-                <div class="data-row">
-                    <div class="row-number">6</div>
-                    <div class="row-content">
-                        <h3><a href="https://github.com/sshihabb007/Inventory_Management_System_C-" target="_blank"
-                                style="color: inherit; text-decoration: none;">Inventory Management System <i
-                                    class="fas fa-external-link-alt" style="font-size: 0.7em;"></i></a></h3>
-                        <p class="meta">C#</p>
-                        <p class="desc">A localized desktop application streamlining daily goods transactions and
-                            facilitating advanced admin inventory tracking.</p>
-                        <div class="tags">
-                            <span class="tag tag-purple">DESKTOP APP</span>
-                            <span class="tag tag-orange">UTILITY</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 7 -->
-                <div class="data-row">
-                    <div class="row-number">7</div>
-                    <div class="row-content">
-                        <h3><a href="https://github.com/sshihabb007/ASP.NET-projects-HTML-demo" target="_blank"
-                                style="color: inherit; text-decoration: none;">ASP.NET-projects-HTML-demo <i
-                                    class="fas fa-external-link-alt" style="font-size: 0.7em;"></i></a></h3>
-                        <p class="meta">C# / HTML • GitHub Repo</p>
-                        <p class="desc">C# Classes and ASP.NET project HTML UI demonstrations.</p>
-                        <div class="tags">
-                            <span class="tag tag-pink">ASP.NET</span>
-                            <span class="tag tag-green">C#</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 8 -->
-                <div class="data-row">
-                    <div class="row-number">8</div>
                     <div class="row-content">
                         <h3><a href="https://github.com/sshihabb007/AIELTS" target="_blank"
                                 style="color: inherit; text-decoration: none;">AI English Test Assistance - Gemini
@@ -233,8 +208,58 @@
                     </div>
                 </div>
 
+                <!-- Project 6 -->
+                <div class="data-row" data-aos="fade-right">
+                    <div class="row-number">6</div>
+                    <div class="row-content">
+                        <h3><a href="https://github.com/sshihabb007/Hospital-Management-System-by-Oracle-10G-and-PLSQL"
+                                target="_blank" style="color: inherit; text-decoration: none;">Hospital Management
+                                System <i class="fas fa-external-link-alt" style="font-size: 0.7em;"></i></a></h3>
+                        <p class="meta">Oracle PL/SQL • C#</p>
+                        <p class="desc">A robust C#-based desktop application. Custom triggers, procedures, & functions
+                            were developed for a comprehensive database ecosystem.</p>
+                        <div class="tags">
+                            <span class="tag tag-purple">DESKTOP APP</span>
+                            <span class="tag tag-green">DATABASE MANAGEMENT</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 7 -->
+                <div class="data-row" data-aos="fade-right">
+                    <div class="row-number">7</div>
+                    <div class="row-content">
+                        <h3><a href="https://github.com/sshihabb007/Inventory_Management_System_C-" target="_blank"
+                                style="color: inherit; text-decoration: none;">Inventory Management System <i
+                                    class="fas fa-external-link-alt" style="font-size: 0.7em;"></i></a></h3>
+                        <p class="meta">C#</p>
+                        <p class="desc">A localized desktop application streamlining daily goods transactions and
+                            facilitating advanced admin inventory tracking.</p>
+                        <div class="tags">
+                            <span class="tag tag-purple">DESKTOP APP</span>
+                            <span class="tag tag-orange">UTILITY</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 8 -->
+                <div class="data-row" data-aos="fade-right">
+                    <div class="row-number">8</div>
+                    <div class="row-content">
+                        <h3><a href="https://github.com/sshihabb007/ASP.NET-projects-HTML-demo" target="_blank"
+                                style="color: inherit; text-decoration: none;">ASP.NET-projects-HTML-demo <i
+                                    class="fas fa-external-link-alt" style="font-size: 0.7em;"></i></a></h3>
+                        <p class="meta">C# / HTML • GitHub Repo</p>
+                        <p class="desc">C# Classes and ASP.NET project HTML UI demonstrations.</p>
+                        <div class="tags">
+                            <span class="tag tag-pink">ASP.NET</span>
+                            <span class="tag tag-green">C#</span>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Project 9 -->
-                <div class="data-row">
+                <div class="data-row" data-aos="fade-right">
                     <div class="row-number">9</div>
                     <div class="row-content">
                         <h3><a href="https://github.com/sshihabb007/AI-CHATBOT-PROJECT" target="_blank"
@@ -251,7 +276,7 @@
                 </div>
 
                 <!-- Project 10 -->
-                <div class="data-row">
+                <div class="data-row" data-aos="fade-right">
                     <div class="row-number">10</div>
                     <div class="row-content">
                         <h3><a href="https://github.com/sshihabb007" target="_blank"
@@ -268,7 +293,7 @@
                 </div>
 
                 <!-- Project 11 -->
-                <div class="data-row">
+                <div class="data-row" data-aos="fade-right">
                     <div class="row-number">11</div>
                     <div class="row-content">
                         <h3><a href="https://github.com/sshihabb007/Shihab-Site-Auditor-pro" target="_blank"
@@ -284,7 +309,7 @@
                 </div>
 
                 <!-- Project 12 -->
-                <div class="data-row">
+                <div class="data-row" data-aos="fade-right">
                     <div class="row-number">12</div>
                     <div class="row-content">
                         <h3><a href="https://github.com/sshihabb007/SITE-ANALYTICS-BY-SHIHAB" target="_blank"
@@ -300,7 +325,7 @@
                 </div>
 
                 <!-- Project 13 -->
-                <div class="data-row">
+                <div class="data-row" data-aos="fade-right">
                     <div class="row-number">13</div>
                     <div class="row-content">
                         <h3><a href="https://github.com/sshihabb007/PC-Power-Calculator" target="_blank"
@@ -316,7 +341,7 @@
                 </div>
 
                 <!-- Project 14 -->
-                <div class="data-row">
+                <div class="data-row" data-aos="fade-right">
                     <div class="row-number">14</div>
                     <div class="row-content">
                         <h3><a href="https://github.com/sshihabb007/TAX-Calculator" target="_blank"
@@ -332,7 +357,7 @@
                 </div>
 
                 <!-- Project 15 -->
-                <div class="data-row">
+                <div class="data-row" data-aos="fade-right">
                     <div class="row-number">15</div>
                     <div class="row-content">
                         <h3><a href="https://github.com/sshihabb007/Pricevisible" target="_blank"
@@ -347,7 +372,7 @@
                 </div>
 
                 <!-- Project 16 -->
-                <div class="data-row">
+                <div class="data-row" data-aos="fade-right">
                     <div class="row-number">16</div>
                     <div class="row-content">
                         <h3><a href="https://github.com/sshihabb007/google-photos-album-image-url-fetch" target="_blank"
@@ -363,7 +388,7 @@
                 </div>
 
                 <!-- Project 17 -->
-                <div class="data-row">
+                <div class="data-row" data-aos="fade-right">
                     <div class="row-number">17</div>
                     <div class="row-content">
                         <h3><a href="https://github.com/sshihabb007/AIUB-Grading-System-C-" target="_blank"
@@ -379,7 +404,7 @@
                 </div>
 
                 <!-- Project 18 -->
-                <div class="data-row">
+                <div class="data-row" data-aos="fade-right">
                     <div class="row-number">18</div>
                     <div class="row-content">
                         <h3><a href="https://hypex.co.uk/" target="_blank"
@@ -397,7 +422,7 @@
                 </div>
 
                 <!-- Project 19 -->
-                <div class="data-row">
+                <div class="data-row" data-aos="fade-right">
                     <div class="row-number">19</div>
                     <div class="row-content">
                         <h3><a href="https://mactechnology.com.au/" target="_blank"
@@ -416,7 +441,7 @@
                 </div>
 
                 <!-- Project 20 -->
-                <div class="data-row">
+                <div class="data-row" data-aos="fade-right">
                     <div class="row-number">20</div>
                     <div class="row-content">
                         <h3><a href="https://www.beri.com.bd/" target="_blank"
@@ -433,7 +458,40 @@
                     </div>
                 </div>
 
+                <!-- Project 21 -->
+                <div class="data-row" data-aos="fade-right">
+                    <div class="row-number">21</div>
+                    <div class="row-content">
+                        <h3><a href="https://locusservices.com.au/" target="_blank"
+                                style="color: inherit; text-decoration: none;">Locus Services <i
+                                    class="fas fa-external-link-alt" style="font-size: 0.7em;"></i></a></h3>
+                        <p class="meta">WordPress • Cyber Security • PHP</p>
+                        <p class="desc">Engineered robust cybersecurity remediation and theme customization,
+                            successfully recovering the site from extensive malware infections and deep system
+                            vulnerabilities.</p>
+                        <div class="tags">
+                            <span class="tag tag-pink">WORDPRESS</span>
+                            <span class="tag tag-green">SECURITY</span>
+                        </div>
+                    </div>
+                </div>
 
+                <!-- Project 22 -->
+                <div class="data-row" data-aos="fade-right">
+                    <div class="row-number">22</div>
+                    <div class="row-content">
+                        <h3><a href="https://themisfamilylawyers.com.au/" target="_blank"
+                                style="color: inherit; text-decoration: none;">Themis Family Lawyers <i
+                                    class="fas fa-external-link-alt" style="font-size: 0.7em;"></i></a></h3>
+                        <p class="meta">WordPress • Cyber Security • Malware Recovery</p>
+                        <p class="desc">Developed the entire site and successfully recovered it from hackers by cleaning
+                            injected malware codes and unauthorized admin users from the backend.</p>
+                        <div class="tags">
+                            <span class="tag tag-pink">WORDPRESS</span>
+                            <span class="tag tag-green">SECURITY</span>
+                        </div>
+                    </div>
+                </div>
 
             </div>
 
@@ -442,7 +500,7 @@
             </div>
             <div class="data-list" id="experience">
                 <!-- Exp 1 -->
-                <div class="data-row">
+                <div class="data-row" data-aos="fade-right">
                     <div class="row-number"><i class="fas fa-building" style="font-size: 0.9rem;"></i></div>
                     <div class="row-content">
                         <h3>Senior Software Engineer @ Bangladesh Education and Research Institute (BERI)</h3>
@@ -458,7 +516,7 @@
                 </div>
 
                 <!-- Exp 2 -->
-                <div class="data-row">
+                <div class="data-row" data-aos="fade-right">
                     <div class="row-number"><i class="fas fa-building" style="font-size: 0.9rem;"></i></div>
                     <div class="row-content">
                         <h3>Web Developer (Remote) @ MAC Technology Australia Pty Ltd.</h3>
@@ -473,7 +531,7 @@
                 </div>
 
                 <!-- Exp 3 -->
-                <div class="data-row">
+                <div class="data-row" data-aos="fade-right">
                     <div class="row-number"><i class="fas fa-building" style="font-size: 0.9rem;"></i></div>
                     <div class="row-content">
                         <h3>Officer, IT @ i - Global Services</h3>
@@ -494,28 +552,42 @@
         <!-- Right Column (Sidebar) -->
         <div class="content-right">
 
-            <div class="sidebar-panel">
+            <div class="sidebar-panel" data-aos="fade-left">
                 <h3><i class="fas fa-chart-line"></i> Trending Skills</h3>
                 <div class="pill-tags">
-                    <span class="pill">JavaScript (AJAX/jQuery)</span>
-                    <span class="pill">C/C++</span>
-                    <span class="pill">Java</span>
-                    <span class="pill">C#</span>
-                    <span class="pill">Python</span>
-                    <span class="pill">PHP</span>
-                    <span class="pill">ASP.NET</span>
-                    <span class="pill">WordPress</span>
-                    <span class="pill">Vertex AI</span>
-                    <span class="pill">AI Model Training</span>
-                    <span class="pill">AI Automation</span>
-                    <span class="pill">Oracle PL/SQL</span>
-                    <span class="pill">CRM</span>
-                    <span class="pill">Video Editing</span>
-                    <span class="pill">Graphics Designing</span>
+                    <span class="pill"><i class="fab fa-js" style="color: #f1e05a; margin-right: 5px;"></i> JavaScript
+                        (AJAX/jQuery)</span>
+                    <span class="pill"><i class="fas fa-code" style="color: #00599c; margin-right: 5px;"></i>
+                        C/C++</span>
+                    <span class="pill"><i class="fab fa-java" style="color: #b07219; margin-right: 5px;"></i>
+                        Java</span>
+                    <span class="pill"><i class="fas fa-hashtag" style="color: #178600; margin-right: 5px;"></i>
+                        C#</span>
+                    <span class="pill"><i class="fab fa-python" style="color: #3572A5; margin-right: 5px;"></i>
+                        Python</span>
+                    <span class="pill"><i class="fab fa-php" style="color: #4F5D95; margin-right: 5px;"></i> PHP</span>
+                    <span class="pill"><i class="fas fa-laptop-code" style="color: #5C2D91; margin-right: 5px;"></i>
+                        ASP.NET</span>
+                    <span class="pill"><i class="fab fa-wordpress" style="color: #21759b; margin-right: 5px;"></i>
+                        WordPress</span>
+                    <span class="pill"><i class="fas fa-brain" style="color: #4285F4; margin-right: 5px;"></i> Vertex
+                        AI</span>
+                    <span class="pill"><i class="fas fa-network-wired" style="color: #0F9D58; margin-right: 5px;"></i>
+                        AI Model Training</span>
+                    <span class="pill"><i class="fas fa-robot" style="color: #DB4437; margin-right: 5px;"></i> AI
+                        Automation</span>
+                    <span class="pill"><i class="fas fa-database" style="color: #F80000; margin-right: 5px;"></i> Oracle
+                        PL/SQL</span>
+                    <span class="pill"><i class="fas fa-users-cog" style="color: #FF9800; margin-right: 5px;"></i>
+                        CRM</span>
+                    <span class="pill"><i class="fas fa-film" style="color: #E91E63; margin-right: 5px;"></i> Video
+                        Editing</span>
+                    <span class="pill"><i class="fas fa-bezier-curve" style="color: #9C27B0; margin-right: 5px;"></i>
+                        Graphics Designing</span>
                 </div>
             </div>
 
-            <div class="sidebar-panel">
+            <div class="sidebar-panel" data-aos="fade-left">
                 <h3><i class="fas fa-user-graduate"></i> Academic Journey</h3>
 
                 <div class="list-item">
@@ -541,7 +613,7 @@
                 </div>
             </div>
 
-            <div class="sidebar-panel">
+            <div class="sidebar-panel" data-aos="fade-left">
                 <h3><i class="fas fa-cog"></i> Other Skills</h3>
                 <div
                     style="border: 1px solid var(--border-color); background: var(--bg-hover); padding: 16px; border-radius: 6px; margin-bottom: 24px;">
@@ -561,6 +633,16 @@
                             <span
                                 style="background: #330000; color: #FF9A00; padding: 2px; width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: bold; border-radius: 3px;">Ai</span>
                             Adobe Illustrator
+                        </li>
+                        <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
+                            <span
+                                style="background: #000000; color: #FFFFFF; padding: 2px; width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: bold; border-radius: 3px;">Cc</span>
+                            Capcut
+                        </li>
+                        <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
+                            <span
+                                style="background: #3AB39D; color: #FFFFFF; padding: 2px; width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: bold; border-radius: 3px;">Fm</span>
+                            Filmora
                         </li>
                         <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
                             <span
@@ -613,6 +695,28 @@
                         <div style="width: 10px; height: 10px; border-radius: 50%; background: var(--text-muted);">
                         </div>
                         <div style="width: 10px; height: 10px; border-radius: 50%; background: var(--text-muted);">
+                        </div>
+                        <div style="width: 10px; height: 10px; border-radius: 50%; background: var(--border-color);">
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 18px;">
+                    <div style="font-size: 1.05rem; margin-bottom: 8px; color: var(--text-main); font-weight: 500;">
+                        Prompt Engineering</div>
+                    <div style="display: flex; gap: 6px;">
+                        <!-- 5 active, 2 inactive -->
+                        <div style="width: 10px; height: 10px; border-radius: 50%; background: var(--text-muted);">
+                        </div>
+                        <div style="width: 10px; height: 10px; border-radius: 50%; background: var(--text-muted);">
+                        </div>
+                        <div style="width: 10px; height: 10px; border-radius: 50%; background: var(--text-muted);">
+                        </div>
+                        <div style="width: 10px; height: 10px; border-radius: 50%; background: var(--text-muted);">
+                        </div>
+                        <div style="width: 10px; height: 10px; border-radius: 50%; background: var(--text-muted);">
+                        </div>
+                        <div style="width: 10px; height: 10px; border-radius: 50%; background: var(--border-color);">
                         </div>
                         <div style="width: 10px; height: 10px; border-radius: 50%; background: var(--border-color);">
                         </div>
@@ -686,11 +790,8 @@
                 </div>
             </div>
 
-            <div class="sidebar-panel" style="background: var(--bg-card); border: 1px solid var(--border-color);">
-                <h3
-                    style="color: #5A92E6; font-size: 1.35rem; margin-bottom: 20px; font-weight: 600; text-transform: none;">
-                    <i class="fas fa-code-branch" style="display:none;"></i> Most Used Languages (Git)
-                </h3>
+            <div class="sidebar-panel" data-aos="fade-left">
+                <h3><i class="fas fa-code-branch"></i> Most Used Languages (Git)</h3>
 
                 <!-- Progress Bar -->
                 <div
@@ -739,7 +840,7 @@
                 </div>
             </div>
 
-            <div class="sidebar-panel">
+            <div class="sidebar-panel" data-aos="fade-left">
                 <h3><i class="fas fa-heart"></i> Interests</h3>
                 <ul
                     style="list-style: none; padding-left: 0; margin: 0; font-size: 0.9rem; color: var(--text-secondary);">
@@ -762,7 +863,7 @@
                 </ul>
             </div>
 
-            <div class="sidebar-panel">
+            <div class="sidebar-panel" data-aos="fade-left">
                 <h3><i class="fas fa-user-circle"></i> Personal Summary</h3>
                 <ul
                     style="list-style: none; padding-left: 0; margin: 0; font-size: 0.9rem; color: var(--text-secondary);">
@@ -782,7 +883,7 @@
                 </ul>
             </div>
 
-            <div class="sidebar-panel">
+            <div class="sidebar-panel" data-aos="fade-left">
                 <h3><i class="fas fa-head-side-comment"></i> Language Proficiency</h3>
                 <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 12px; margin-top: 5px;">
                     Excellent written and Oral competence in both-</p>
@@ -798,7 +899,7 @@
                 </div>
             </div>
 
-            <div class="sidebar-panel">
+            <div class="sidebar-panel" data-aos="fade-left">
                 <h3><i class="fas fa-users-cog"></i> References</h3>
 
                 <div class="list-item" style="padding: 10px 0;">
@@ -833,16 +934,50 @@
     </main>
 
     <!-- Footer -->
-    <footer
-        style="text-align: center; padding: 40px 20px; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.9rem;">
-        <div style="margin-bottom: 20px;">
-            <a href="front/contact" class="btn btn-outline" style="font-size: 0.85rem; padding: 8px 16px;"><i
-                    class="fas fa-envelope"></i> Contact Me</a>
-        </div>
-        <p>&copy; 2024 Mehedi Hasan Shihab. All rights reserved.</p>
-    </footer>
+    <div id="site-footer"></div>
 
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+    </script>
+    <script src="js/load-components.js"></script>
     <script src="js/theme.js"></script>
+    <script src="js/shihab-security.js"></script>
+
+    <!-- Color Switcher -->
+    <div class="color-switcher-container">
+        <div class="color-palette" id="color-palette" style="display: none;">
+            <button class="color-btn active" data-color="default" style="background: #F8FAFC; border: 1px solid #ccc;"
+                aria-label="Default theme"></button>
+            <button class="color-btn" data-color="#0EA5E9" style="background: #0EA5E9;"
+                aria-label="Cyan theme"></button>
+            <button class="color-btn" data-color="#3B82F6" style="background: #3B82F6;"
+                aria-label="Blue theme"></button>
+            <button class="color-btn" data-color="#A855F7" style="background: #A855F7;"
+                aria-label="Purple theme"></button>
+            <button class="color-btn" data-color="#EC4899" style="background: #EC4899;"
+                aria-label="Pink theme"></button>
+            <button class="color-btn" data-color="#10B981" style="background: #10B981;"
+                aria-label="Green theme"></button>
+            <button class="color-btn" data-color="#F59E0B" style="background: #F59E0B;"
+                aria-label="Orange theme"></button>
+        </div>
+        <div class="switcher-controls">
+            <button id="palette-toggle" class="icon-btn"><i class="fas fa-palette"></i></button>
+        </div>
+    </div>
+
+    <!-- Back to Top -->
+    <button id="back-to-top" class="back-to-top" aria-label="Back to Top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 </body>
 
 </html>
