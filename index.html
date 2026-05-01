@@ -30,6 +30,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         content="Explore the projects of Mehedi Hasan Shihab in React, Javascript, Node.js, php, AI based platform, C#, and AI research.">
     <meta property="og:image" content="https://sshihabb007.github.io/asset/Shihab.jpg">
     <link rel="icon" type="image/png" href="asset/fav.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#6366f1">
+    <link rel="apple-touch-icon" href="asset/fav.png">
     <link rel="stylesheet" href="css/style.css?v=2.0">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -993,6 +996,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <button id="back-to-top" class="back-to-top" aria-label="Back to Top">
         <i class="fas fa-arrow-up"></i>
     </button>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js').then(reg => {
+                    console.log('Service Worker registered!');
+                }).catch(err => console.log('Service Worker registration failed', err));
+            });
+        }
+    </script>
 </body>
 
 </html>
