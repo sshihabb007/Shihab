@@ -10,10 +10,8 @@ async function loadSiteComponents() {
         basePath = headerPlaceholder.getAttribute('data-basepath');
     } else {
         const path = window.location.pathname;
-        if (path.includes('/front/') || path.includes('/tools/') && !path.includes('/tools/compressor/') && !path.includes('/tools/audio-to-text/')) {
+        if (path.includes('/front/') || path.includes('/compressor/') || path.includes('/audio-to-text/') || path.includes('/tax-calculator/') || path.includes('/power-calculator/')) {
             basePath = '../';
-        } else if (path.includes('/tools/compressor/') || path.includes('/tools/audio-to-text/')) {
-            basePath = '../../';
         }
     }
 
