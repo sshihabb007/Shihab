@@ -57,6 +57,11 @@ body.light-mode {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
 body {
   background-color: var(--bg-dark);
   color: var(--text-main);
