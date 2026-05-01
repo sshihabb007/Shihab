@@ -1,9 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-537NPQRV');</script>
+<!-- End Google Tag Manager -->
+
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3JN6PYW17Z"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-3JN6PYW17Z');
+    </script>
+
+    <title>PC Power Supply Calculator | Mehedi Hasan Shihab</title>
+
+    <meta name="description" content="Calculate the estimated power consumption of your PC build. Check PSU wattage requirements based on your CPU, GPU, RAM, and storage.">
+    <link rel="canonical" href="https://sshihabb007.github.io/power-calculator/">
+    <meta property="og:title" content="PC Power Supply Calculator | Mehedi Hasan Shihab">
+    <meta property="og:description" content="Calculate the estimated power consumption of your PC build. Check PSU wattage requirements based on your CPU, GPU, RAM, and storage.">
+    <meta property="og:url" content="https://sshihabb007.github.io/power-calculator/">
+    <meta property="og:image" content="https://sshihabb007.github.io/asset/Shihab.jpg">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PC Power Supply Calculator | Mehedi Hasan Shihab">
+    <meta name="twitter:description" content="Calculate the estimated power consumption of your PC build. Check PSU wattage requirements based on your CPU, GPU, RAM, and storage.">
+    <meta name="twitter:image" content="https://sshihabb007.github.io/asset/Shihab.jpg">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pro PC Power & UPS Calculator | Mehedi Hasan Shihab</title>
+    
     <link rel="icon" type="image/png" href="../asset/fav.png">
     <link rel="stylesheet" href="../css/style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
@@ -20,7 +53,7 @@
                             700: 'var(--border-color)',
                             500: 'var(--text-muted)',
                             400: 'var(--text-muted)',
-                            300: 'var(--text-main)',
+                           300: 'var(--text-main)',
                         },
                         sky: {
                             500: 'var(--primary-color)',
@@ -48,6 +81,12 @@
 </head>
 
 <body id="sshihabb007-body" class="mehedi-protected flex flex-col min-h-screen">
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-537NPQRV"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
     <!-- Header -->
     <div id="site-header" data-basepath="../"></div>
 
@@ -131,12 +170,11 @@
                                 <span id="sshihab007_hours_val" class="text-sky-400">8 Hours</span>
                             </div>
                             <input type="range" id="sshihab007_hours" min="1" max="24" value="8"
-                                class="w-full h-1.5 bg-slate-700 rounded-lg appearance-none cursor-pointer">
+                                class="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-sky-500 hover:accent-sky-400 transition-all">
                         </div>
 
                         <div>
-                            <label class="block text-xs uppercase tracking-wider text-slate-500 mb-1">Calculation
-                                Mode</label>
+                            <label class="block text-xs uppercase tracking-wider text-slate-500 mb-1">Calculation Mode</label>
                             <select id="sshihab007_region"
                                 class="bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 w-full focus:ring-2 focus:ring-sky-500 outline-none">
                                 <option value="BD">Bangladesh (Tiered Tariff)</option>
@@ -173,7 +211,7 @@
                     <div class="sshihab007-glass p-6 rounded-2xl border-l-4 border-green-500">
                         <p class="text-xs text-slate-400 uppercase font-bold">Estimated Cost</p>
                         <h3 class="text-3xl font-mono font-bold mt-1"><span id="sshihab007_final_cost">0</span><span
-                                class="text-lg ml-1 font-normal text-slate-500" id="sshihab007_unit_label">à§³</span></h3>
+                                class="text-lg ml-1 font-normal text-slate-500" id="sshihab007_unit_label">৳</span></h3>
                     </div>
                 </div>
 
@@ -246,11 +284,11 @@
                         <h4 class="text-sm font-bold text-slate-400 uppercase mb-4">Pro Tips for <span
                                 class="sshihab007-accent">@sshihab007</span></h4>
                         <ul class="text-xs space-y-3 text-slate-400">
-                            <li class="flex gap-2"><span class="text-sky-500">â–¸</span> Undervolting your Ryzen 7 7700
+                            <li class="flex gap-2"><span class="text-sky-500"><i class="fas fa-bolt mt-0.5"></i></span> Undervolting your Ryzen 7 7700
                                 can save ~15W with zero performance loss.</li>
-                            <li class="flex gap-2"><span class="text-sky-500">â–¸</span> Always use a UPS with "Pure Sine
+                            <li class="flex gap-2"><span class="text-sky-500"><i class="fas fa-bolt mt-0.5"></i></span> Always use a UPS with "Pure Sine
                                 Wave" for your RTX card's health.</li>
-                            <li class="flex gap-2"><span class="text-sky-500">â–¸</span> Your monitor draws power even
+                            <li class="flex gap-2"><span class="text-sky-500"><i class="fas fa-bolt mt-0.5"></i></span> Your monitor draws power even
                                 when the screen is black but on.</li>
                         </ul>
                     </div>
@@ -315,7 +353,7 @@
 
             if (region === 'BD') {
                 customBox.classList.add('hidden');
-                document.getElementById('sshihab007_unit_label').innerText = 'à§³';
+                document.getElementById('sshihab007_unit_label').innerText = '৳';
 
                 let remainingKwh = monthlyKwh;
                 let tierHtml = '';
@@ -327,7 +365,7 @@
                     if (unitsInSlab > 0) {
                         const slabCost = unitsInSlab * slab.rate;
                         finalCost += slabCost;
-                        tierHtml += `<div class="flex justify-between"><span>${slab.limit === Infinity ? '600+' : slab.limit} Unit Slab (@${slab.rate})</span> <span>à§³${slabCost.toFixed(2)}</span></div>`;
+                        tierHtml += `<div class="flex justify-between"><span class="text-slate-400">${slab.limit === Infinity ? '600+' : slab.limit} Unit Slab (@${slab.rate})</span> <span class="font-semibold">৳${slabCost.toFixed(2)}</span></div>`;
                         remainingKwh -= unitsInSlab;
                     }
                     prevLimit = slab.limit;
@@ -341,7 +379,7 @@
                 tierListEl.parentElement.classList.remove('opacity-20');
             } else {
                 customBox.classList.remove('hidden');
-                document.getElementById('sshihab007_unit_label').innerText = '$';
+                document.getElementById('sshihab007_unit_label').innerText = '৳';
                 const rate = parseFloat(document.getElementById('sshihab007_custom_rate').value) || 0;
                 finalCost = monthlyKwh * rate;
                 tierListEl.innerHTML = `<p class="text-slate-400">Global flat rate calculation active.</p>`;
