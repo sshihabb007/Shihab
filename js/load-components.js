@@ -1,11 +1,21 @@
 // js/load-components.js
 
 async function loadSiteComponents() {
-    const isFront = window.location.pathname.includes('/front/');
-    const basePath = isFront ? '../' : './';
-
     const headerPlaceholder = document.getElementById('site-header');
     const footerPlaceholder = document.getElementById('site-footer');
+
+    // Default basePath logic based on path depth
+    let basePath = './';
+    if (headerPlaceholder && headerPlaceholder.getAttribute('data-basepath')) {
+        basePath = headerPlaceholder.getAttribute('data-basepath');
+    } else {
+        const path = window.location.pathname;
+        if (path.includes('/front/') || path.includes('/tools/') && !path.includes('/tools/compressor/') && !path.includes('/tools/audio-to-text/')) {
+            basePath = '../';
+        } else if (path.includes('/tools/compressor/') || path.includes('/tools/audio-to-text/')) {
+            basePath = '../../';
+        }
+    }
 
     try {
         if (headerPlaceholder) {
