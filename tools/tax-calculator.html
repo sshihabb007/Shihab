@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHIHAB Tax Engine | Mehedi Hasan Shihab</title>
+    <link rel="icon" type="image/png" href="../asset/fav.png">
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            corePlugins: { preflight: false },
+            theme: {
+                extend: {
+                    colors: {
+                        slate: {
+                            800: 'var(--text-main)',
+                            700: 'var(--text-main)',
+                            400: 'var(--text-muted)',
+                            300: 'var(--text-muted)',
+                        },
+                        indigo: {
+                            900: 'var(--bg-card)',
+                            800: 'var(--bg-hover)',
+                            700: 'var(--primary-color)',
+                            600: 'var(--primary-color)',
+                            500: 'var(--primary-color)',
+                            400: 'var(--primary-color)',
+                            300: 'var(--text-muted)',
+                            200: 'var(--text-muted)',
+                            100: 'var(--text-main)',
+                            50: 'var(--bg-card)',
+                        },
+                        gray: {
+                            100: 'transparent',
+                            50: 'var(--bg-dark)',
+                            200: 'var(--border-color)',
+                        },
+                        white: 'var(--bg-card)',
+                        orange: {
+                            50: 'var(--bg-card)',
+                            200: 'var(--border-color)',
+                            800: 'var(--text-main)',
+                            600: 'var(--text-muted)',
+                            500: 'var(--primary-color)',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        input {
+            color: var(--text-main) !important;
+            background-color: var(--bg-dark) !important;
+            border: 1px solid var(--border-color) !important;
+        }
+    </style>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+
+<body id="sshihabb007-body" class="mehedi-protected" x-data="taxEngine()">
+    <!-- Header -->
+    <div id="site-header"></div>
+    
+    <main class="container" style="padding: 40px 20px;">
+        <div class="text-center mb-10">
+            <h1 class="text-4xl font-bold" style="color: var(--text-main); margin-bottom: 8px;">Tax Calculator Pro</h1>
+            <p style="color: var(--text-muted); font-size: 1.1rem;">Developer: <span style="color: var(--primary-color); font-weight: 600;">MEHEDI HASAN SHIHAB</span></p>
+        </div>
+
+        <div class="max-w-7xl mx-auto">
+        <header class="bg-indigo-900 text-white p-6 rounded-2xl mb-6 shadow-lg flex justify-between items-center">
+            <div>
+                <h1 class="text-2xl font-black tracking-tight">SHIHAB TAX ENGINE <span
+                        class="text-indigo-400 font-light">PRO</span></h1>
+                <p class="text-xs text-indigo-300">BD Finance Ordinance 2025/26 Compliant</p>
+            </div>
+            <div class="flex gap-3">
+                <button @click="resetData()"
+                    class="text-xs border border-indigo-400 px-3 py-2 rounded-lg hover:bg-indigo-800">Reset All</button>
+                <button @click="adminMode = !adminMode" :class="adminMode ? 'bg-orange-500' : 'bg-indigo-600'"
+                    class="px-4 py-2 rounded-lg text-sm font-bold shadow-md">
+                    <span x-text="adminMode ? 'ðŸ”’ Lock Rules' : 'âš™ï¸ Edit Tax Laws'"></span>
+                </button>
+            </div>
+        </header>
+
+        <div class="grid lg:grid-cols-12 gap-6">
+
+            <div class="lg:col-span-8 space-y-6">
+
+                <template x-if="adminMode">
+                    <div class="bg-orange-50 p-6 rounded-2xl border-2 border-orange-200 shadow-inner">
+                        <h3 class="font-bold text-orange-800 mb-4 flex items-center gap-2">ðŸ› ï¸ Live Law Configuration
+                        </h3>
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div>
+                                <label class="text-[10px] font-bold text-orange-600 uppercase">General Exemption</label>
+                                <input type="number" x-model.number="law.thresholds.general"
+                                    class="w-full p-2 rounded border-orange-200 text-sm">
+                            </div>
+                            <div>
+                                <label class="text-[10px] font-bold text-orange-600 uppercase">Rebate % of
+                                    Income</label>
+                                <input type="number" x-model.number="law.rebateIncomeRate"
+                                    class="w-full p-2 rounded border-orange-200 text-sm">
+                            </div>
+                            <div>
+                                <label class="text-[10px] font-bold text-orange-600 uppercase">Rebate Cap (BDT)</label>
+                                <input type="number" x-model.number="law.rebateCap"
+                                    class="w-full p-2 rounded border-orange-200 text-sm">
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <label class="text-[10px] font-bold text-orange-600 uppercase">Edit Slabs (Threshold | Rate
+                                %)</label>
+                            <template x-for="(slab, i) in law.slabs" :key="i">
+                                <div class="flex gap-2 mb-2">
+                                    <input type="number" x-model.number="slab.limit"
+                                        class="w-full p-2 text-xs border rounded">
+                                    <input type="number" x-model.number="slab.rate"
+                                        class="w-24 p-2 text-xs border rounded">
+                                    <button @click="law.slabs.splice(i, 1)" class="text-red-500 px-2">Ã—</button>
+                                </div>
+                            </template>
+                            <button @click="law.slabs.push({limit: 500000, rate: 25})"
+                                class="text-[10px] font-bold text-orange-700 underline">+ Add Slab</button>
+                        </div>
+                    </div>
+                </template>
+
+                <div class="bg-white p-8 rounded-2xl shadow-sm grid md:grid-cols-2 gap-8 border border-gray-200">
+                    <section class="space-y-4">
+                        <h4 class="font-bold text-slate-400 uppercase text-xs tracking-widest border-b pb-2">Income
+                            Details</h4>
+                        <div>
+                            <label class="block text-sm font-semibold mb-1">Monthly Basic Salary</label>
+                            <input type="number" x-model.number="user.monthlySalary"
+                                class="w-full p-3 bg-gray-50 rounded-xl border-0 focus:ring-2 focus:ring-indigo-500 text-lg font-bold">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold mb-1">Other Annual Income</label>
+                            <input type="number" x-model.number="user.otherAnnual"
+                                class="w-full p-3 bg-gray-50 rounded-xl border-0 focus:ring-2 focus:ring-indigo-500">
+                        </div>
+                    </section>
+
+                    <section class="space-y-4">
+                        <h4 class="font-bold text-slate-400 uppercase text-xs tracking-widest border-b pb-2">Investments
+                            (For Rebate)</h4>
+                        <div>
+                            <label class="block text-sm font-semibold mb-1">Sanchaypatra / Stocks / Bonds / Shares</label>
+                            <input type="number" x-model.number="user.investment"
+                                class="w-full p-3 bg-indigo-50 rounded-xl border-0 focus:ring-2 focus:ring-indigo-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold mb-1">Total Net Wealth (BDT)</label>
+                            <input type="number" x-model.number="user.netWealth"
+                                class="w-full p-3 bg-gray-50 rounded-xl border-0 focus:ring-2 focus:ring-indigo-500"
+                                placeholder="e.g. 40,000,000">
+                        </div>
+                    </section>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-4">
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+                        <p class="text-[10px] font-bold text-gray-400 uppercase">Gross Annual Income</p>
+                        <p class="text-xl font-black text-slate-700" x-text="format(totalIncome())"></p>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+                        <p class="text-[10px] font-bold text-gray-400 uppercase">Salary Exemption (1/3rd)</p>
+                        <p class="text-xl font-black text-red-500" x-text="format(exemption())"></p>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+                        <p class="text-[10px] font-bold text-gray-400 uppercase">Net Taxable Income</p>
+                        <p class="text-xl font-black text-indigo-600" x-text="format(netTaxable())"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-4">
+                <div class="bg-indigo-600 text-white p-8 rounded-3xl shadow-2xl sticky top-6">
+                    <span class="bg-indigo-500 px-3 py-1 rounded-full text-[10px] font-bold uppercase">Payable
+                        Tax</span>
+                    <h2 class="text-5xl font-black mt-2 mb-6" x-text="format(finalTax())"></h2>
+
+                    <div class="space-y-4 border-t border-indigo-500 pt-6">
+                        <div class="flex justify-between text-sm">
+                            <span class="text-indigo-200">Calculated Slab Tax:</span>
+                            <span class="font-bold" x-text="format(grossTax())"></span>
+                        </div>
+                        <div class="flex justify-between text-sm text-green-300">
+                            <span>Investment Rebate:</span>
+                            <span class="font-bold" x-text="'-' + format(rebateValue())"></span>
+                        </div>
+                        <template x-if="surcharge() > 0">
+                            <div class="flex justify-between text-sm text-orange-300">
+                                <span>Wealth Surcharge:</span>
+                                <span class="font-bold" x-text="'+' + format(surcharge())"></span>
+                            </div>
+                        </template>
+                    </div>
+
+                    <div class="mt-8 bg-indigo-700 p-4 rounded-2xl space-y-3">
+                        <p class="text-[10px] font-bold text-indigo-300 uppercase">Rebate Logic Analysis</p>
+                        <div class="text-[11px] space-y-1 text-indigo-100">
+                            <div class="flex justify-between"><span>15% of Investment:</span> <span
+                                    x-text="format(user.investment * 0.15)"></span></div>
+                            <div class="flex justify-between"><span>3% of Taxable:</span> <span
+                                    x-text="format(netTaxable() * law.rebateIncomeRate/100)"></span></div>
+                            <div class="flex justify-between font-bold text-white pt-1 border-t border-indigo-600">
+                                <span>Final Rebate Applied:</span> <span x-text="format(rebateValue())"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function taxEngine() {
+            return {
+                adminMode: false,
+                user: JSON.parse(localStorage.getItem('user_data')) || {
+                    monthlySalary: 42000,
+                    otherAnnual: 0,
+                    investment: 100000,
+                    netWealth: 631000,
+                    category: 'general'
+                },
+                law: JSON.parse(localStorage.getItem('tax_law')) || {
+                    thresholds: { general: 350000, female: 400000 },
+                    slabs: [
+                        { limit: 100000, rate: 5 },
+                        { limit: 400000, rate: 10 },
+                        { limit: 500000, rate: 15 },
+                        { limit: 500000, rate: 20 },
+                        { limit: 2000000, rate: 25 },
+                        { limit: 99999999, rate: 30 }
+                    ],
+                    exemptionCap: 450000,
+                    rebateIncomeRate: 3, // 3% of income
+                    rebateInvestRate: 15, // 15% of investment
+                    rebateCap: 1000000,
+                    minTax: 5000
+                },
+
+                init() {
+                    this.$watch('user', val => localStorage.setItem('user_data', JSON.stringify(val)));
+                    this.$watch('law', val => localStorage.setItem('tax_law', JSON.stringify(val)));
+                },
+
+                totalIncome() { return (this.user.monthlySalary * 12) + this.user.otherAnnual; },
+                exemption() { return Math.min(this.totalIncome() / 3, this.law.exemptionCap); },
+                netTaxable() { return Math.max(0, this.totalIncome() - this.exemption()); },
+
+                grossTax() {
+                    let income = this.netTaxable();
+                    let threshold = this.user.category === 'female' ? this.law.thresholds.female : this.law.thresholds.general;
+                    if (income <= threshold) return 0;
+
+                    income -= threshold;
+                    let tax = 0;
+                    for (let slab of this.law.slabs) {
+                        let taxable = Math.min(income, slab.limit);
+                        tax += taxable * (slab.rate / 100);
+                        income -= taxable;
+                        if (income <= 0) break;
+                    }
+                    return tax;
+                },
+
+                rebateValue() {
+                    if (this.grossTax() === 0) return 0;
+                    const option1 = this.user.investment * (this.law.rebateInvestRate / 100);
+                    const option2 = this.netTaxable() * (this.law.rebateIncomeRate / 100);
+                    return Math.min(option1, option2, this.law.rebateCap);
+                },
+
+                surcharge() {
+                    // Surcharge logic: 10% if wealth > 4 crore
+                    if (this.user.netWealth < 40000000) return 0;
+                    const baseTax = this.grossTax() - this.rebateValue();
+                    return baseTax * 0.10;
+                },
+
+                finalTax() {
+                    let tax = this.grossTax() - this.rebateValue() + this.surcharge();
+                    const threshold = this.user.category === 'female' ? this.law.thresholds.female : this.law.thresholds.general;
+                    if (this.netTaxable() <= threshold) return 0;
+                    return Math.max(tax, this.law.minTax);
+                },
+
+                format(n) { return new Intl.NumberFormat('en-IN').format(Math.round(n)) + ' à§³'; },
+                resetData() { localStorage.clear(); location.reload(); }
+            }
+        }
+    </script>
+    </main>
+
+    <!-- Footer -->
+    <div id="site-footer"></div>
+
+    <!-- Scripts -->
+    <script src="../js/load-components.js"></script>
+    <script src="../js/theme.js"></script>
+    <script src="../js/shihab-security.js"></script>
+</body>
+
+</html>
+
