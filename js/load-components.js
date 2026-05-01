@@ -60,36 +60,100 @@ async function loadSiteComponents() {
         });
     }
 
-    // PWA Install Logic
+    // PWA Install Popup Logic
     let deferredPrompt;
-    window.addEventListener('beforeinstallprompt', (e) => {
-        // Prevent Chrome 67 and earlier from automatically showing the prompt
-        e.preventDefault();
-        // Stash the event so it can be triggered later.
-        deferredPrompt = e;
-    });
-
-    const installBtn = document.getElementById('sshihabb007-install-btn');
-    if (installBtn) {
-        installBtn.addEventListener('click', async () => {
+    
+    function showInstallPopup() {
+        if (document.getElementById('sshihabb007-pwa-popup')) return;
+        
+        const popup = document.createElement('div');
+        popup.id = 'sshihabb007-pwa-popup';
+        popup.style.cssText = `
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--bg-card, #1f2937);
+            border: 1px solid var(--border-color, #374151);
+            color: var(--text-main, #f9fafb);
+            padding: 10px 20px;
+            border-radius: 50px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 9999;
+            font-family: inherit;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: slideUpFade 0.5s ease-out;
+        `;
+        
+        if (!document.getElementById('pwa-popup-style')) {
+            const style = document.createElement('style');
+            style.id = 'pwa-popup-style';
+            style.innerHTML = `
+                @keyframes slideUpFade {
+                    from { opacity: 0; transform: translate(-50%, 20px); }
+                    to { opacity: 1; transform: translate(-50%, 0); }
+                }
+                #sshihabb007-pwa-popup:hover {
+                    transform: translateX(-50%) translateY(-2px);
+                    box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+                    border-color: var(--primary-color, #6366f1);
+                }
+            `;
+            document.head.appendChild(style);
+        }
+        
+        popup.innerHTML = `
+            <i class="fas fa-download" style="color: var(--primary-color, #6366f1); font-size: 1.1rem;"></i>
+            <span style="font-weight: 700;">Install App</span>
+            <button id="pwa-popup-close" style="background:none; border:none; color: var(--text-muted, #9ca3af); cursor: pointer; margin-left: 4px; font-size: 1rem; padding: 4px hover:text-white"><i class="fas fa-times"></i></button>
+        `;
+        
+        document.body.appendChild(popup);
+        
+        popup.addEventListener('click', async (e) => {
+            if(e.target.closest('#pwa-popup-close')) {
+                popup.style.opacity = '0';
+                setTimeout(() => popup.remove(), 300);
+                // Save preference so it doesn't bother them immediately again
+                sessionStorage.setItem('pwa-popup-dismissed', 'true');
+                return;
+            }
+            
             if (deferredPrompt) {
-                // Show the install prompt
                 deferredPrompt.prompt();
-                // Wait for the user to respond to the prompt
                 const { outcome } = await deferredPrompt.userChoice;
                 if (outcome === 'accepted') {
-                    console.log('User accepted the install prompt');
-                } else {
-                    console.log('User dismissed the install prompt');
+                    popup.remove();
                 }
-                // We've used the prompt, and can't use it again, throw it away
                 deferredPrompt = null;
             } else {
-                // Fallback for browsers that don't support beforeinstallprompt (e.g. iOS Safari)
-                // or if the app is already installed
-                alert("To install this app:\n\n- On iOS: Tap the Share button and select 'Add to Home Screen'\n- On Android/Chrome: Use the browser menu to 'Install App' or 'Add to Home screen'\n\nIf already installed, you can open it from your app drawer!");
+                alert("To install this app:\n\n- On iOS: Tap the Share button and select 'Add to Home Screen'\n- On Android/Chrome: Use the browser menu to 'Install App' or 'Add to Home screen'");
             }
         });
+    }
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        if (!sessionStorage.getItem('pwa-popup-dismissed')) {
+            showInstallPopup();
+        }
+    });
+    
+    // Check iOS fallback
+    const isIos = () => {
+        const userAgent = window.navigator.userAgent.toLowerCase();
+        return /iphone|ipad|ipod/.test( userAgent );
+    };
+    const isStandalone = () => ('standalone' in window.navigator) && (window.navigator.standalone);
+    
+    if (isIos() && !isStandalone() && !sessionStorage.getItem('pwa-popup-dismissed')) {
+        setTimeout(showInstallPopup, 1000);
     }
 }
 
