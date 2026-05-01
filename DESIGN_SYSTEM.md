@@ -66,12 +66,18 @@ Used for skills, categories, and labels.
 - **Components**: `.nav-brand` (left), `.nav-links` (center), `.nav-actions` (right, includes theme toggle).
 - **Responsive**: Stacks or wraps on mobile (`max-width: 768px`).
 
-### Main Content Grid (`.container`)
+### Main Content Grid (`.container`) - Portfolio Pages Only
+- **Usage**: Strict usage for main portfolio pages (Home, Projects, Experience). **DO NOT use for utility tools.**
 - **Max Width**: `1200px`, centered.
 - **Layout**: 2-column grid (`2fr 1fr` ratio) on desktop.
   - `.content-left`: Main lists, projects, experiences.
   - `.content-right`: Sidebar widgets (skills, academics).
-- **Responsive**: Collapses to `1fr` (single column) at `992px`.
+
+### Utility Tools Layout
+- **Usage**: For all standalone utility tools (e.g., Age Calculator, Tax Calculator, Compressor).
+- **Container Strategy**: Avoid the `.container` class as it forces a `2fr 1fr` split. Instead, use fluid Tailwind containers on the `<main>` tag:
+  `<main class="w-full max-w-7xl mx-auto flex-grow flex flex-col items-center justify-center px-4 py-10">`
+- **Responsive Layouts**: Inside the tool, rely purely on Tailwind's responsive modifiers (`grid-cols-1 lg:grid-cols-3`, `flex-col md:flex-row`) to handle component stacking on mobile and tablet without interference from the global stylesheet.
 
 ### Data Rows / Cards (`.data-row`)
 - **Usage**: Project list, experience list.
@@ -91,3 +97,6 @@ Used for skills, categories, and labels.
 2. **Follow existing class conventions**: Use `.data-row`, `.section-head`, `.tag`, and `.btn` utilities rather than creating new custom classes for similar elements.
 3. **Respect spacing**: Maintain consistent padding/margins (`16px`, `20px`, `24px` scales) and `8px` border radii for cards.
 4. **Responsive First**: Always verify that new layouts collapse cleanly on tablets (`992px`), mobile (`768px`), and small screens (`480px`).
+5. **Brand Identifiers in Code**: For all new tools, strictly use `shihab`, `mehedi`, and `sshihabb007` as prefixes for all HTML IDs, CSS classes, JavaScript variables, and functions (e.g., `mehedi_calculate`, `shihab_btn`).
+6. **Developer Attribution**: At the top of every new tool page (typically below the main title), clearly include the developer's name linked back to the site's home directory. Example: `Developed by <a href="../">Mehedi Hasan Shihab</a>`.
+7. **Theme Variable Strictness**: Do not use Tailwind's `dark:` classes (e.g. `dark:text-white`) or hardcoded color utilities (e.g. `text-slate-800`) on structural elements like `<body>` or `<nav>`. Since the project uses a custom JavaScript theme switcher that applies a `.light-mode` class, Tailwind's OS-level dark mode will conflict with it. Always strictly use the defined CSS variables (`var(--text-main)`, `var(--bg-dark)`) to guarantee flawless Bright/Dark mode toggling.

@@ -10,27 +10,23 @@ async function loadSiteComponents() {
         basePath = headerPlaceholder.getAttribute('data-basepath');
     } else {
         const path = window.location.pathname;
-        if (path.includes('/front/') || path.includes('/compressor/') || path.includes('/audio-to-text/') || path.includes('/tax-calculator/') || path.includes('/power-calculator/')) {
+        if (path.includes('/front/') || path.includes('/compressor/') || path.includes('/audio-to-text/') || path.includes('/tax-calculator/') || path.includes('/power-calculator/') || path.includes('/age-calculator/') || path.includes('/bmi-calculator/')) {
             basePath = '../';
         }
     }
 
     try {
+        const cacheBuster = '?v=' + new Date().getTime();
         if (headerPlaceholder) {
-            const res = await fetch(basePath + 'components/header.html');
+            const res = await fetch(basePath + 'components/header.html' + cacheBuster);
             if (res.ok) {
                 let html = await res.text();
                 html = html.replace(/\{\{basePath\}\}/g, basePath);
                 headerPlaceholder.outerHTML = html;
             }
         }
-    } catch (e) {
-        console.error('Failed to load header', e);
-    }
-
-    try {
         if (footerPlaceholder) {
-            const res = await fetch(basePath + 'components/footer.html');
+            const res = await fetch(basePath + 'components/footer.html' + cacheBuster);
             if (res.ok) {
                 let html = await res.text();
                 html = html.replace(/\{\{basePath\}\}/g, basePath);
