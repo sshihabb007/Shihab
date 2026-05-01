@@ -59,6 +59,38 @@ async function loadSiteComponents() {
             localStorage.setItem('mehedi_theme', isLight ? 'light' : 'dark');
         });
     }
+
+    // PWA Install Logic
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', (e) => {
+        // Prevent Chrome 67 and earlier from automatically showing the prompt
+        e.preventDefault();
+        // Stash the event so it can be triggered later.
+        deferredPrompt = e;
+    });
+
+    const installBtn = document.getElementById('sshihabb007-install-btn');
+    if (installBtn) {
+        installBtn.addEventListener('click', async () => {
+            if (deferredPrompt) {
+                // Show the install prompt
+                deferredPrompt.prompt();
+                // Wait for the user to respond to the prompt
+                const { outcome } = await deferredPrompt.userChoice;
+                if (outcome === 'accepted') {
+                    console.log('User accepted the install prompt');
+                } else {
+                    console.log('User dismissed the install prompt');
+                }
+                // We've used the prompt, and can't use it again, throw it away
+                deferredPrompt = null;
+            } else {
+                // Fallback for browsers that don't support beforeinstallprompt (e.g. iOS Safari)
+                // or if the app is already installed
+                alert("To install this app:\n\n- On iOS: Tap the Share button and select 'Add to Home Screen'\n- On Android/Chrome: Use the browser menu to 'Install App' or 'Add to Home screen'\n\nIf already installed, you can open it from your app drawer!");
+            }
+        });
+    }
 }
 
 if (document.readyState === 'loading') {
