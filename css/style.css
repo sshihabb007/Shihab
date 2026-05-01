@@ -134,8 +134,8 @@ body {
   border: 1px solid var(--border-color);
   border-radius: 6px;
   top: calc(100% + 10px);
-  left: 50%;
-  transform: translateX(-50%);
+  right: 0;
+  left: auto;
   /* Removed overflow: hidden to allow the bridge to work */
 }
 
