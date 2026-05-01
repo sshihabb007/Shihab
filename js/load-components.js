@@ -76,15 +76,15 @@ async function loadSiteComponents() {
             background: var(--bg-card, #1f2937);
             border: 1px solid var(--border-color, #374151);
             color: var(--text-main, #f9fafb);
-            padding: 10px 20px;
+            padding: 6px 14px;
             border-radius: 50px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 8px;
             z-index: 9999;
             font-family: inherit;
-            font-size: 0.9rem;
+            font-size: 0.75rem;
             cursor: pointer;
             transition: all 0.3s ease;
             animation: slideUpFade 0.5s ease-out;
@@ -108,9 +108,9 @@ async function loadSiteComponents() {
         }
         
         popup.innerHTML = `
-            <i class="fas fa-download" style="color: var(--primary-color, #6366f1); font-size: 1.1rem;"></i>
+            <i class="fas fa-download" style="color: var(--primary-color, #6366f1); font-size: 0.85rem;"></i>
             <span style="font-weight: 700;">Install App</span>
-            <button id="pwa-popup-close" style="background:none; border:none; color: var(--text-muted, #9ca3af); cursor: pointer; margin-left: 4px; font-size: 1rem; padding: 4px hover:text-white"><i class="fas fa-times"></i></button>
+            <button id="pwa-popup-close" style="background:none; border:none; color: var(--text-muted, #9ca3af); cursor: pointer; margin-left: 2px; font-size: 0.85rem; padding: 2px"><i class="fas fa-times"></i></button>
         `;
         
         document.body.appendChild(popup);
@@ -119,8 +119,6 @@ async function loadSiteComponents() {
             if(e.target.closest('#pwa-popup-close')) {
                 popup.style.opacity = '0';
                 setTimeout(() => popup.remove(), 300);
-                // Save preference so it doesn't bother them immediately again
-                sessionStorage.setItem('pwa-popup-dismissed', 'true');
                 return;
             }
             
@@ -140,9 +138,7 @@ async function loadSiteComponents() {
     window.addEventListener('beforeinstallprompt', (e) => {
         e.preventDefault();
         deferredPrompt = e;
-        if (!sessionStorage.getItem('pwa-popup-dismissed')) {
-            showInstallPopup();
-        }
+        showInstallPopup();
     });
     
     // Check iOS fallback
@@ -152,7 +148,7 @@ async function loadSiteComponents() {
     };
     const isStandalone = () => ('standalone' in window.navigator) && (window.navigator.standalone);
     
-    if (isIos() && !isStandalone() && !sessionStorage.getItem('pwa-popup-dismissed')) {
+    if (isIos() && !isStandalone()) {
         setTimeout(showInstallPopup, 1000);
     }
 }
