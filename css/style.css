@@ -128,11 +128,21 @@ body {
   z-index: 1000;
   border: 1px solid var(--border-color);
   border-radius: 6px;
-  top: 100%;
+  top: calc(100% + 10px);
   left: 50%;
   transform: translateX(-50%);
-  overflow: hidden;
-  margin-top: 10px;
+  /* Removed overflow: hidden to allow the bridge to work */
+}
+
+/* Invisible bridge to keep hover active */
+.nav-dropdown-content::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background: transparent;
 }
 
 .nav-dropdown-content a {
@@ -146,8 +156,15 @@ body {
   transition: background-color 0.2s, color 0.2s;
 }
 
+.nav-dropdown-content a:first-child {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
 .nav-dropdown-content a:last-child {
   border-bottom: none;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .nav-dropdown-content a:hover {
