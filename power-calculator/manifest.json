@@ -1,7 +1,7 @@
 {
   "name": "Power Calculator | Mehedi Hasan Shihab",
   "short_name": "Power Calc",
-  "start_url": "./power-calculator.html",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#18181b",
   "theme_color": "#f59e0b",
