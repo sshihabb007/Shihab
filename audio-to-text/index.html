@@ -45,12 +45,13 @@
         .text-white { color: var(--text-main) !important; }
     </style>
 </head>
-<body id="sshihabb007-body" class="mehedi-protected">
+<body id="sshihabb007-body" class="mehedi-protected flex flex-col min-h-screen">
 <!-- Header -->
-<div id="site-header" data-basepath="../../"></div>
+<div id="site-header" data-basepath="../"></div>
 
-<main class="container" style="padding: 40px 20px;">
-  <div class="max-w-4xl mx-auto mb-12 flex justify-between items-center shihab_header mehedi_head sshihabb007_top border-b pb-6" style="border-color: var(--border-color);">
+<main class="container flex-grow flex items-center justify-center" style="padding: 40px 20px;">
+  <div class="w-full">
+    <div class="max-w-4xl mx-auto mb-12 flex justify-between items-center shihab_header mehedi_head sshihabb007_top border-b pb-6" style="border-color: var(--border-color);">
     <div>
       <h1 class="text-4xl font-bold tracking-tight text-white shihab_title mehedi_h1 sshihabb007_heading">Scribe<span class="text-indigo-500 shihab_span mehedi_text_color sshihabb007_ai">AI</span></h1>
       <p class="mt-2 shihab_desc mehedi_p sshihabb007_subtitle" style="color: var(--text-muted)">Private, browser-based transcription for long audio. By <span style="color: var(--primary-color); font-weight: 600;">MEHEDI HASAN SHIHAB</span>.</p>
@@ -153,12 +154,15 @@
 </div>
 
 <script type="module" src="shihab_main.js"></script>
+    </div> <!-- Close w-full div -->
+</main>
+
     <!-- Footer -->
     <div id="site-footer"></div>
 
     <!-- Scripts -->
-    <script src="../../js/load-components.js"></script>
-    <script src="../../js/theme.js"></script>
-    <script src="../../js/shihab-security.js"></script>
+    <script src="../js/load-components.js"></script>
+    <script src="../js/theme.js"></script>
+    <script src="../js/shihab-security.js"></script>
 </body>
 </html>
