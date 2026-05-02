@@ -342,7 +342,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (Mehedi_e.target.files && Mehedi_e.target.files[0]) {
             Shihab_currentFile = Mehedi_e.target.files[0];
             
-            if (Shihab_currentFile.type.startsWith('audio/') || Shihab_currentFile.type === 'video/mp4' || Shihab_currentFile.name.toLowerCase().endsWith('.m4a')) {
+            if (Shihab_currentFile.type.startsWith('audio/') || Shihab_currentFile.type.startsWith('video/') || Shihab_currentFile.name.toLowerCase().endsWith('.m4a') || Shihab_currentFile.name.toLowerCase().endsWith('.ts')) {
                 Mehedi_handleAudioFile();
             } else if (Shihab_currentFile.type.startsWith('image/')) {
                 Mehedi_hideAllPanels();
@@ -374,7 +374,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (Mehedi_e.dataTransfer.files && Mehedi_e.dataTransfer.files[0]) {
             const sshihabb007_file = Mehedi_e.dataTransfer.files[0];
-            if (sshihabb007_file.type.startsWith('image/') || sshihabb007_file.type.startsWith('audio/') || sshihabb007_file.type === 'video/mp4' || sshihabb007_file.name.toLowerCase().endsWith('.m4a')) {
+            if (sshihabb007_file.type.startsWith('image/') || sshihabb007_file.type.startsWith('audio/') || sshihabb007_file.type.startsWith('video/') || sshihabb007_file.name.toLowerCase().endsWith('.m4a') || sshihabb007_file.name.toLowerCase().endsWith('.ts')) {
                 sshihabb007_fileInput.files = Mehedi_e.dataTransfer.files;
                 sshihabb007_fileInput.dispatchEvent(new Event('change'));
             }
