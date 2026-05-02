@@ -68,6 +68,17 @@ body {
   line-height: 1.5;
 }
 
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 /* Navbar */
 .navbar {
   display: flex;
@@ -79,6 +90,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 100;
+  animation: slideDown 0.5s ease-out forwards;
 }
 
 .nav-brand {
