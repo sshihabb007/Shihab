@@ -1,11 +1,16 @@
-const CACHE_NAME = 'sshihabb007-pwa-v3';
+const CACHE_NAME = 'sshihabb007-pwa-v4';
 const STATIC_ASSETS = [
     './',
     './css/style.css',
     './js/theme.js',
     './js/load-components.js',
     './js/shihab-security.js',
-    './asset/fav.png'
+    './asset/fav.png',
+    './currency-converter/',
+    './currency-converter/index.html',
+    './currency-converter/style.css',
+    './currency-converter/script.js',
+    './currency-converter/manifest.json'
 ];
 
 self.addEventListener('install', (event) => {
