@@ -12,8 +12,12 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log(mehedi_security_warning, shihab_console_style);
 
     if (ENABLE_SECURITY_PROTECTION) {
-        // Disable Right Click
+        // Disable Right Click (Except for input/textarea to allow paste)
         document.addEventListener('contextmenu', (mehedi_event) => {
+            const tag = mehedi_event.target.tagName.toLowerCase();
+            if (tag === 'input' || tag === 'textarea' || tag === 'select') {
+                return; // Allow context menu for copy/paste in form fields
+            }
             mehedi_event.preventDefault();
             console.warn("Right-click is disabled on sshihabb007's portfolio.");
         });
@@ -33,14 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Append watermark on copy (Kept active regardless of right-click protection)
-    document.addEventListener('copy', (sshihabb007_event) => {
-        const mehedi_selection = document.getSelection();
-        const shihab_watermark = "\n\n--- \nCopied from the portfolio of Mehedi Hasan Shihab \nGitHub: https://github.com/sshihabb007";
+    // Copy feature is fully enabled to allow copy/paste functionality without watermarks
 
-        if (mehedi_selection !== null && mehedi_selection.toString().length > 0) {
-            sshihabb007_event.clipboardData.setData('text/plain', mehedi_selection.toString() + shihab_watermark);
-            sshihabb007_event.preventDefault();
-        }
-    });
 });
