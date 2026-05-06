@@ -1349,13 +1349,16 @@ html, body, a, button {
   }
 }
 
-/* Grow hover effect for header menus, name, and h1/h2 tags */
+/* Grow hover effect for header menus, name, h1/h2 tags, and buttons */
 .nav-brand,
 .nav-links > a,
 .nav-dropdown > a,
 .nav-dropdown-content a,
 .nav-actions a,
 .nav-actions button,
+.btn,
+.btn-social,
+button,
 h1,
 h2 {
   transition: transform 0.3s ease-in-out !important;
@@ -1371,9 +1374,12 @@ h2 {
 .nav-dropdown-content a:hover,
 .nav-actions a:hover,
 .nav-actions button:hover,
+.btn:hover,
+.btn-social:hover,
+button:hover,
 h1:hover,
 h2:hover {
-  transform: scale(1.20) !important;
+  transform: scale(1.13) !important;
   z-index: 1001; /* Ensure scaled dropdown item overlaps others */
   position: relative;
 }
