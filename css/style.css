@@ -57,7 +57,8 @@ body.light-mode {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
-html, body {
+html,
+body {
   overflow-x: clip;
   width: 100%;
 }
@@ -73,6 +74,7 @@ body {
     transform: translateY(-100%);
     opacity: 0;
   }
+
   to {
     transform: translateY(0);
     opacity: 1;
@@ -129,7 +131,7 @@ body {
   display: inline-block;
 }
 
-.nav-dropdown > a {
+.nav-dropdown>a {
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -141,7 +143,7 @@ body {
   position: absolute;
   background-color: var(--bg-card);
   min-width: 240px;
-  box-shadow: 0px 8px 24px rgba(0,0,0,0.4);
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.4);
   z-index: 1000;
   border: 1px solid var(--border-color);
   border-radius: 6px;
@@ -1195,17 +1197,13 @@ body {
   }
 }
 
-/* Anti-Copy and Persona specific CSS by sshihabb007 */
-.mehedi-protected {
-    /* Removed user-select: none to allow text copying */
-}
 
-#sshihabb007-body {
-    /* Main protected area root */
-}
 
 /* --- Custom Cursor --- */
-html, body, a, button {
+html,
+body,
+a,
+button {
   cursor: none !important;
 }
 
@@ -1217,7 +1215,8 @@ html, body, a, button {
   transform: translate(-50%, -50%);
   border-radius: 50%;
   z-index: 99999;
-  pointer-events: none; /* Crucial: clicks pass through these divs */
+  pointer-events: none;
+  /* Crucial: clicks pass through these divs */
 }
 
 .cursor-dot {
@@ -1254,7 +1253,7 @@ html, body, a, button {
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .back-to-top.show {
@@ -1267,10 +1266,16 @@ html, body, a, button {
 }
 
 @media (pointer: coarse) {
-  html, body, a, button {
+
+  html,
+  body,
+  a,
+  button {
     cursor: auto !important;
   }
-  .cursor-dot, .cursor-outline {
+
+  .cursor-dot,
+  .cursor-outline {
     display: none !important;
   }
 }
@@ -1285,6 +1290,7 @@ html, body, a, button {
   flex-direction: column;
   gap: 15px;
 }
+
 .color-palette {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
@@ -1293,9 +1299,10 @@ html, body, a, button {
   display: flex;
   gap: 10px;
   align-items: center;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
 }
+
 .color-btn {
   width: 30px;
   height: 30px;
@@ -1304,18 +1311,22 @@ html, body, a, button {
   cursor: pointer;
   transition: transform 0.2s;
 }
+
 .color-btn:hover {
   transform: scale(1.1);
 }
+
 .color-btn.active {
   outline: 2px solid var(--bg-card);
   box-shadow: 0 0 0 4px var(--primary-color);
 }
+
 .switcher-controls {
   display: flex;
   gap: 10px;
   padding-left: 10px;
 }
+
 .icon-btn {
   width: 40px;
   height: 40px;
@@ -1328,18 +1339,21 @@ html, body, a, button {
   justify-content: center;
   cursor: pointer;
   transition: all 0.2s;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
+
 .icon-btn:hover {
   background: var(--bg-hover);
   color: var(--primary-color);
   transform: translateY(-2px);
 }
+
 @media (max-width: 768px) {
   .color-switcher-container {
     bottom: 20px;
     left: 20px;
   }
+
   .color-palette {
     flex-wrap: wrap;
     max-width: 150px;
@@ -1351,8 +1365,8 @@ html, body, a, button {
 
 /* Grow hover effect for header menus, name, h1/h2 tags, and buttons */
 .nav-brand,
-.nav-links > a,
-.nav-dropdown > a,
+.nav-links>a,
+.nav-dropdown>a,
 .nav-dropdown-content a,
 .nav-actions a,
 .nav-actions button,
@@ -1364,13 +1378,13 @@ h2 {
   transition: transform 0.3s ease-in-out !important;
 }
 
-.nav-links > a {
+.nav-links>a {
   display: inline-block;
 }
 
 .nav-brand:hover,
-.nav-links > a:hover,
-.nav-dropdown > a:hover,
+.nav-links>a:hover,
+.nav-dropdown>a:hover,
 .nav-dropdown-content a:hover,
 .nav-actions a:hover,
 .nav-actions button:hover,
@@ -1380,6 +1394,7 @@ button:hover,
 h1:hover,
 h2:hover {
   transform: scale(1.13) !important;
-  z-index: 1001; /* Ensure scaled dropdown item overlaps others */
+  z-index: 1001;
+  /* Ensure scaled dropdown item overlaps others */
   position: relative;
 }
