@@ -1348,3 +1348,32 @@ html, body, a, button {
     padding: 15px;
   }
 }
+
+/* Grow hover effect for header menus, name, and h1/h2 tags */
+.nav-brand,
+.nav-links > a,
+.nav-dropdown > a,
+.nav-dropdown-content a,
+.nav-actions a,
+.nav-actions button,
+h1,
+h2 {
+  transition: transform 0.3s ease-in-out !important;
+}
+
+.nav-links > a {
+  display: inline-block;
+}
+
+.nav-brand:hover,
+.nav-links > a:hover,
+.nav-dropdown > a:hover,
+.nav-dropdown-content a:hover,
+.nav-actions a:hover,
+.nav-actions button:hover,
+h1:hover,
+h2:hover {
+  transform: scale(1.20) !important;
+  z-index: 1001; /* Ensure scaled dropdown item overlaps others */
+  position: relative;
+}
