@@ -230,14 +230,6 @@
                     </div>
                 </div>
 
-                <!-- Mode Switcher -->
-                <div class="flex space-x-2 overflow-x-auto pb-2 custom-scroll" data-aos="fade-up" data-aos-delay="100">
-                    <button class="mode-tab active px-6 py-2 rounded-lg font-semibold border border-brd bg-card hover:bg-hover transition whitespace-nowrap" data-mode="scientific">Scientific</button>
-                    <button class="mode-tab px-6 py-2 rounded-lg font-semibold border border-brd bg-card hover:bg-hover transition whitespace-nowrap" data-mode="graphing">Graphing</button>
-                    <button class="mode-tab px-6 py-2 rounded-lg font-semibold border border-brd bg-card hover:bg-hover transition whitespace-nowrap" data-mode="matrix">Matrix</button>
-                    <button class="mode-tab px-6 py-2 rounded-lg font-semibold border border-brd bg-card hover:bg-hover transition whitespace-nowrap" data-mode="programmer">Programmer</button>
-                </div>
-
                 <!-- Active Workspaces -->
                 <div class="relative flex-grow">
                     
@@ -293,62 +285,6 @@
                             <button class="calc-btn py-4" data-cmd=".">.</button>
                             <button class="calc-btn calc-btn-secondary py-4 text-xl" data-cmd="+">+</button>
                             <button class="calc-btn calc-btn-primary py-4 col-span-1 md:col-span-2 text-2xl" data-cmd="=">=</button>
-                        </div>
-                    </div>
-
-                    <!-- Graphing Workspace (Hidden initially) -->
-                    <div id="sshihabb007_ws_graphing" class="workspace-panel glass-panel p-4 md:p-6 hidden absolute inset-0 z-10 flex flex-col">
-                        <div class="flex justify-between items-center mb-4">
-                            <h3 class="text-xl font-bold text-primary"><i class="fas fa-chart-line mr-2"></i> 2D Plotter</h3>
-                            <button id="shihab_plotBtn" class="calc-btn calc-btn-primary px-4 py-2 text-sm md:text-base">Plot Equation</button>
-                        </div>
-                        <div id="mehedi_plotArea" class="flex-grow bg-white rounded-lg overflow-hidden flex items-center justify-center relative w-full">
-                            <span class="text-gray-400 font-medium absolute">Rendered Plot</span>
-                        </div>
-                    </div>
-
-                    <!-- Matrix Workspace (Hidden initially) -->
-                    <div id="shihab_ws_matrix" class="workspace-panel glass-panel p-4 md:p-6 hidden absolute inset-0 z-10 flex flex-col overflow-y-auto custom-scroll">
-                        <h3 class="text-xl font-bold text-primary mb-4"><i class="fas fa-th mr-2"></i> Matrix Operations</h3>
-                        <p class="text-txtmuted mb-4">Input matrices using Math.js syntax: `[1, 2; 3, 4]`.</p>
-                        <div class="grid grid-cols-2 gap-4">
-                            <button class="calc-btn calc-btn-secondary py-3" data-cmd="det">Determinant</button>
-                            <button class="calc-btn calc-btn-secondary py-3" data-cmd="inv">Inverse</button>
-                            <button class="calc-btn calc-btn-secondary py-3" data-cmd="transpose">Transpose</button>
-                            <button class="calc-btn calc-btn-secondary py-3" data-cmd="cross">Cross Product</button>
-                        </div>
-                    </div>
-
-                    <!-- Programmer Workspace (Hidden initially) -->
-                    <div id="mehedi_ws_programmer" class="workspace-panel glass-panel p-4 md:p-6 hidden absolute inset-0 z-10 flex flex-col">
-                        <h3 class="text-xl font-bold text-primary mb-4"><i class="fas fa-code mr-2"></i> Programmer Tools</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div class="space-y-4">
-                                <div class="bg-dark p-3 rounded border border-brd">
-                                    <span class="text-xs text-txtmuted">HEX</span>
-                                    <div id="shihab_progHex" class="text-lg font-mono">0</div>
-                                </div>
-                                <div class="bg-dark p-3 rounded border border-brd">
-                                    <span class="text-xs text-txtmuted">DEC</span>
-                                    <div id="shihab_progDec" class="text-lg font-mono">0</div>
-                                </div>
-                                <div class="bg-dark p-3 rounded border border-brd">
-                                    <span class="text-xs text-txtmuted">OCT</span>
-                                    <div id="shihab_progOct" class="text-lg font-mono">0</div>
-                                </div>
-                                <div class="bg-dark p-3 rounded border border-brd">
-                                    <span class="text-xs text-txtmuted">BIN</span>
-                                    <div id="shihab_progBin" class="text-lg font-mono">0</div>
-                                </div>
-                            </div>
-                            <div class="grid grid-cols-2 gap-3">
-                                <button class="calc-btn calc-btn-secondary py-3" data-cmd="bitAnd">AND</button>
-                                <button class="calc-btn calc-btn-secondary py-3" data-cmd="bitOr">OR</button>
-                                <button class="calc-btn calc-btn-secondary py-3" data-cmd="bitXor">XOR</button>
-                                <button class="calc-btn calc-btn-secondary py-3" data-cmd="bitNot">NOT</button>
-                                <button class="calc-btn calc-btn-secondary py-3" data-cmd="leftShift"><<</button>
-                                <button class="calc-btn calc-btn-secondary py-3" data-cmd="rightShift">>></button>
-                            </div>
                         </div>
                     </div>
 

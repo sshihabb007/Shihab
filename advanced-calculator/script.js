@@ -129,32 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 4. Mode Switching
-    document.querySelectorAll('.mode-tab').forEach(tab => {
-        tab.addEventListener('click', (e) => {
-            document.querySelectorAll('.mode-tab').forEach(t => t.classList.remove('active'));
-            e.currentTarget.classList.add('active');
-            
-            const targetMode = e.currentTarget.getAttribute('data-mode');
-            document.querySelectorAll('.workspace-panel').forEach(p => p.classList.add('hidden'));
-            
-            let targetPanel = null;
-            if(targetMode === 'scientific') targetPanel = document.getElementById('mehedi_ws_scientific');
-            if(targetMode === 'graphing') targetPanel = document.getElementById('sshihabb007_ws_graphing');
-            if(targetMode === 'matrix') targetPanel = document.getElementById('shihab_ws_matrix');
-            if(targetMode === 'programmer') targetPanel = document.getElementById('mehedi_ws_programmer');
-            
-            if(targetPanel) {
-                targetPanel.classList.remove('hidden');
-            }
-            
-            // If graphing, resize plot
-            if(targetMode === 'graphing' && window.Mehedi_plotInst) {
-                // simple hack to trigger redraw
-                window.dispatchEvent(new Event('resize'));
-            }
-        });
-    });
+    // Mode Switching Logic Removed (Only Scientific Mode Now)
 
     // 5. Format & Radian Toggles
     document.getElementById('shihab_formatBtn').addEventListener('click', (e) => {
@@ -169,39 +144,17 @@ document.addEventListener('DOMContentLoaded', () => {
         // math.js angles handled globally via conversion if needed
     });
 
-    // 6. Graphing Plot Button
-    document.getElementById('shihab_plotBtn').addEventListener('click', () => {
-        let expr = Shihab_mathField.text(); // use text for math.js/function-plot
-        if(!expr) return;
-        
-        // Remove MathQuill specific text artifacts if any
-        expr = expr.replace(/\\cdot/g, '*');
-        
-        try {
-            // Function-plot requires target to be clear or it appends multiple SVGs
-            const plotArea = document.getElementById('mehedi_plotArea');
-            // Remove previous SVG if exists
-            const existingSvg = plotArea.querySelector('svg');
-            if (existingSvg) existingSvg.remove();
-            
-            window.Mehedi_plotInst = functionPlot({
-                target: '#mehedi_plotArea',
-                width: plotArea.clientWidth || 600,
-                height: 300,
-                grid: true,
-                data: [{
-                    fn: expr
-                }]
-            });
-            const placeholder = document.querySelector('#mehedi_plotArea span');
-            if(placeholder) placeholder.style.display = 'none';
-        } catch(e) {
-            alert("Could not plot: " + e.message);
-        }
-    });
+    // Graphing Logic Removed
 
     // 7. Global Keyboard Numpad Support
     document.addEventListener('keydown', (e) => {
+        // Block all alphabet characters except if modifier key is pressed (for copy/paste)
+        if (!e.ctrlKey && !e.metaKey && !e.altKey && e.key.length === 1 && /[a-zA-Z]/.test(e.key)) {
+            e.preventDefault();
+            e.stopPropagation();
+            return;
+        }
+
         const isMqFocused = document.activeElement && (document.activeElement.tagName === 'TEXTAREA' || document.activeElement.tagName === 'INPUT');
         
         // Map physical keys to calculator commands
@@ -246,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
                  sshihabb007_handleKeypad('clear');
             }
         }
-    });
+    }, true);
 
     // Focus field on load
     Shihab_mathField.focus();
@@ -294,12 +247,15 @@ function sshihabb007_handleKeypad(cmd) {
     Shihab_mathField.focus();
 }
 
+let Mehedi_lastValidResult = '0';
+
 // Live Result Evaluation
 function Shihab_updateLiveResult() {
     const rawText = Shihab_mathField.text();
     if (!rawText.trim()) {
         Shihab_liveResult.textContent = '0';
         sshihabb007_errorBox.style.opacity = '0';
+        Mehedi_lastValidResult = '0';
         return;
     }
 
@@ -307,10 +263,12 @@ function Shihab_updateLiveResult() {
         let expr = rawText.replace(/\\cdot/g, '*');
         let result = Mehedi_calcEngine.evaluate(expr);
         Shihab_liveResult.textContent = "= " + result;
+        Mehedi_lastValidResult = "= " + result;
         sshihabb007_errorBox.style.opacity = '0';
     } catch (e) {
-        Shihab_liveResult.textContent = '';
-        sshihabb007_errorBox.style.opacity = '0'; // CHANGED: Don't show error while user is actively typing!
+        // Keep the total number always visible even if expression is temporarily invalid
+        Shihab_liveResult.textContent = Mehedi_lastValidResult;
+        sshihabb007_errorBox.style.opacity = '0';
     }
 }
 
