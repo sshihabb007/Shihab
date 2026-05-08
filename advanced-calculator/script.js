@@ -93,6 +93,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const mathInputSpan = document.getElementById('mehedi_mathInput');
     Shihab_mathField = MQ.MathField(mathInputSpan, {
         spaceBehavesLikeTab: true,
+        substituteTextarea: function() {
+            const ta = document.createElement('textarea');
+            ta.setAttribute('autocapitalize', 'off');
+            ta.setAttribute('autocomplete', 'off');
+            ta.setAttribute('autocorrect', 'off');
+            ta.setAttribute('spellcheck', 'false');
+            ta.setAttribute('inputmode', 'none'); // Disables virtual keyboard
+            return ta;
+        },
         handlers: {
             edit: function() {
                 Shihab_updateLiveResult();
@@ -102,6 +111,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
+
+    // Fallback: Force inputmode="none" on the generated textarea just in case
+    const mehedi_mqTextarea = mathInputSpan.querySelector('textarea');
+    if (mehedi_mqTextarea) {
+        mehedi_mqTextarea.setAttribute('inputmode', 'none');
+    }
 
     // Constants UI removed
 
