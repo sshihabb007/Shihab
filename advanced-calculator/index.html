@@ -247,28 +247,28 @@
             <div class="w-full max-w-3xl flex flex-col space-y-6">
                 
                 <!-- Display Shell -->
-                <div class="glass-panel p-6 flex flex-col justify-end min-h-[160px] relative shadow-glass overflow-hidden" data-aos="zoom-in">
+                <div class="glass-panel p-4 md:p-5 flex flex-col justify-end min-h-[110px] md:min-h-[130px] relative shadow-glass overflow-hidden" data-aos="zoom-in">
                     <!-- Format Toggle -->
-                    <div class="absolute top-4 left-4 flex space-x-2 z-10">
-                        <button id="shihab_formatBtn" class="text-xs px-3 py-1 rounded-full border border-brd bg-hover text-txtmuted hover:text-primary hover:border-primary transition" title="Toggle Exact/Decimal Format">
+                    <div class="absolute top-2.5 left-3 flex space-x-2 z-10">
+                        <button id="shihab_formatBtn" class="text-[10px] px-2.5 py-0.5 rounded-full border border-brd bg-hover text-txtmuted hover:text-primary hover:border-primary transition" title="Toggle Exact/Decimal Format">
                             DECIMAL
                         </button>
                     </div>
-                    <div class="absolute top-4 right-4 flex space-x-2 z-10">
-                        <button id="shihab_degRadBtn" class="text-xs px-3 py-1 rounded-full border border-brd bg-hover text-txtmuted hover:text-primary hover:border-primary transition">
+                    <div class="absolute top-2.5 right-3 flex space-x-2 z-10">
+                        <button id="shihab_degRadBtn" class="text-[10px] px-2.5 py-0.5 rounded-full border border-brd bg-hover text-txtmuted hover:text-primary hover:border-primary transition">
                             RAD
                         </button>
                     </div>
 
                     <!-- Input MathQuill Container -->
-                    <div class="w-full overflow-x-auto custom-scroll pb-2 mt-8">
+                    <div class="w-full overflow-x-auto custom-scroll pb-1 mt-6">
                         <span id="mehedi_mathInput"></span>
                     </div>
 
                     <!-- Live Result / Error Output -->
-                    <div class="w-full flex justify-between items-end mt-2 pt-2 border-t border-brd">
-                        <div id="sshihabb007_errorBox" class="text-red-500 text-sm font-medium opacity-0 transition-opacity">Error: Invalid Expression</div>
-                        <div id="shihab_liveResult" class="text-3xl font-bold text-primary truncate max-w-[70%]">0</div>
+                    <div class="w-full flex justify-between items-end mt-1.5 pt-1.5 border-t border-brd">
+                        <div id="sshihabb007_errorBox" class="text-red-500 text-xs font-medium opacity-0 transition-opacity">Error: Invalid Expression</div>
+                        <div id="shihab_liveResult" class="text-2xl font-bold text-primary truncate max-w-[70%]">0</div>
                     </div>
                 </div>
 
