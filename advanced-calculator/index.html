@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-537NPQRV');</script>
+    <!-- End Google Tag Manager -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Scientific Calculator | Mehedi Hasan Shihab</title>
+    <meta name="description" content="High-precision scientific calculator with MathQuill graphing, algebra, and physics constants by Mehedi Hasan Shihab.">
+    <link rel="icon" type="image/png" href="../asset/fav.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#3B82F6">
+
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <!-- Vendor CSS -->
+    <link rel="stylesheet" href="vendor/mathquill/mathquill.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            corePlugins: { preflight: false },
+            theme: {
+                extend: {
+                    colors: {
+                        dark: 'var(--bg-dark)',
+                        card: 'var(--bg-card)',
+                        hover: 'var(--bg-hover)',
+                        brd: 'var(--border-color)',
+                        primary: 'var(--primary-color)',
+                        txtmain: 'var(--text-main)',
+                        txtmuted: 'var(--text-muted)'
+                    },
+                    boxShadow: {
+                        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.15)',
+                        'inset-glass': 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.1)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Vendor Scripts -->
+    <script src="vendor/jquery.min.js"></script>
+    <script src="vendor/mathquill/mathquill.js"></script>
+    <script src="vendor/math.js"></script>
+    <script src="vendor/nerdamer/nerdamer.core.js"></script>
+    <script src="vendor/nerdamer/Algebra.js"></script>
+    <script src="vendor/nerdamer/Calculus.js"></script>
+    <script src="vendor/nerdamer/Solve.js"></script>
+    <script src="vendor/d3.min.js"></script>
+    <script src="vendor/function-plot.js"></script>
+
+    <style>
+        /* Tool-specific overrides for adaptive UI */
+        .glass-panel {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 1rem;
+        }
+
+        .calc-btn {
+            background: var(--bg-dark);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.125rem;
+            font-weight: 600;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .calc-btn:hover {
+            background: var(--bg-hover);
+            transform: translateY(-2px);
+            border-color: var(--primary-color);
+        }
+
+        .calc-btn:active {
+            transform: scale(0.95);
+        }
+
+        .calc-btn-primary {
+            background: var(--primary-color);
+            color: #ffffff;
+            border-color: var(--primary-color);
+        }
+
+        .calc-btn-primary:hover {
+            background: #2563eb;
+            color: #ffffff;
+        }
+
+        .calc-btn-secondary {
+            background: var(--bg-hover);
+            color: var(--text-main);
+        }
+
+        /* MathQuill Display Overrides */
+        .mq-editable-field {
+            border: none !important;
+            box-shadow: none !important;
+            width: 100%;
+            font-size: 2rem !important;
+            color: var(--text-main) !important;
+            background: transparent !important;
+            padding: 0 !important;
+        }
+        
+        .mq-root-block {
+            padding: 0.5rem !important;
+        }
+        
+        .mq-cursor {
+            border-left-color: var(--primary-color) !important;
+        }
+
+        /* Custom Scrollbar for side palette */
+        .custom-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scroll::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 10px;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-color);
+        }
+        
+        .mode-tab.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+    </style>
+</head>
+
+<body class="flex flex-col min-h-screen text-txtmain bg-dark transition-colors duration-300">
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-537NPQRV" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div id="site-header" data-basepath="../"></div>
+
+    <main class="w-full max-w-7xl mx-auto flex-grow px-4 py-8 flex flex-col space-y-6">
+        
+        <!-- Header -->
+        <div class="text-center space-y-2 mb-4" data-aos="fade-down">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
+                Advanced Scientific Calculator
+            </h1>
+            <p class="font-medium text-txtmuted">
+                High-precision computational engine developed by <a href="../" class="text-primary hover:underline font-semibold">MEHEDI HASAN SHIHAB</a>
+            </p>
+        </div>
+
+        <!-- Bento Dashboard Layout -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 flex-grow">
+            
+            <!-- Main Calculator Area (Left/Center) -->
+            <div class="lg:col-span-8 xl:col-span-9 flex flex-col space-y-6">
+                
+                <!-- Display Shell -->
+                <div class="glass-panel p-6 flex flex-col justify-end min-h-[160px] relative shadow-glass overflow-hidden" data-aos="zoom-in">
+                    <!-- Format Toggle -->
+                    <div class="absolute top-4 left-4 flex space-x-2 z-10">
+                        <button id="shihab_formatBtn" class="text-xs px-3 py-1 rounded-full border border-brd bg-hover text-txtmuted hover:text-primary hover:border-primary transition" title="Toggle Exact/Decimal Format">
+                            DECIMAL
+                        </button>
+                    </div>
+                    <div class="absolute top-4 right-4 flex space-x-2 z-10">
+                        <button id="shihab_degRadBtn" class="text-xs px-3 py-1 rounded-full border border-brd bg-hover text-txtmuted hover:text-primary hover:border-primary transition">
+                            RAD
+                        </button>
+                    </div>
+
+                    <!-- Input MathQuill Container -->
+                    <div class="w-full flex justify-end items-end overflow-x-auto custom-scroll pb-2 mt-8">
+                        <span id="mehedi_mathInput" class="text-right min-w-[50%]"></span>
+                    </div>
+
+                    <!-- Live Result / Error Output -->
+                    <div class="w-full flex justify-between items-end mt-2 pt-2 border-t border-brd">
+                        <div id="sshihabb007_errorBox" class="text-red-500 text-sm font-medium opacity-0 transition-opacity">Error: Invalid Expression</div>
+                        <div id="shihab_liveResult" class="text-3xl font-bold text-primary truncate max-w-[70%]">0</div>
+                    </div>
+                </div>
+
+                <!-- Mode Switcher -->
+                <div class="flex space-x-2 overflow-x-auto pb-2 custom-scroll" data-aos="fade-up" data-aos-delay="100">
+                    <button class="mode-tab active px-6 py-2 rounded-lg font-semibold border border-brd bg-card hover:bg-hover transition whitespace-nowrap" data-mode="scientific">Scientific</button>
+                    <button class="mode-tab px-6 py-2 rounded-lg font-semibold border border-brd bg-card hover:bg-hover transition whitespace-nowrap" data-mode="graphing">Graphing</button>
+                    <button class="mode-tab px-6 py-2 rounded-lg font-semibold border border-brd bg-card hover:bg-hover transition whitespace-nowrap" data-mode="matrix">Matrix</button>
+                    <button class="mode-tab px-6 py-2 rounded-lg font-semibold border border-brd bg-card hover:bg-hover transition whitespace-nowrap" data-mode="programmer">Programmer</button>
+                </div>
+
+                <!-- Active Workspaces -->
+                <div class="relative flex-grow">
+                    
+                    <!-- Scientific Keypad Workspace -->
+                    <div id="mehedi_ws_scientific" class="workspace-panel glass-panel p-4 md:p-6 transition-opacity duration-300">
+                        <!-- Keypad Grid -->
+                        <div class="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 gap-3">
+                            <!-- Advanced Math Row -->
+                            <button class="calc-btn calc-btn-secondary py-3" data-cmd="sin">sin</button>
+                            <button class="calc-btn calc-btn-secondary py-3" data-cmd="cos">cos</button>
+                            <button class="calc-btn calc-btn-secondary py-3" data-cmd="tan">tan</button>
+                            <button class="calc-btn calc-btn-secondary py-3" data-cmd="log">log</button>
+                            <button class="calc-btn calc-btn-secondary py-3" data-cmd="ln">ln</button>
+                            <button class="calc-btn calc-btn-secondary py-3 hidden md:flex" data-cmd="ans">Ans</button>
+
+                            <button class="calc-btn calc-btn-secondary py-3" data-cmd="pi">π</button>
+                            <button class="calc-btn calc-btn-secondary py-3" data-cmd="e">e</button>
+                            <button class="calc-btn calc-btn-secondary py-3" data-cmd="sqrt">√</button>
+                            <button class="calc-btn calc-btn-secondary py-3" data-cmd="^">x^y</button>
+                            <button class="calc-btn calc-btn-secondary py-3" data-cmd="!">x!</button>
+                            <button class="calc-btn calc-btn-secondary py-3 hidden md:flex" data-cmd="derive">d/dx</button>
+
+                            <!-- Numeric Pad Starts -->
+                            <button class="calc-btn calc-btn-secondary py-3 sm:col-start-1 md:col-start-1" data-cmd="(">(</button>
+                            <button class="calc-btn calc-btn-secondary py-3" data-cmd=")">)</button>
+                            <button class="calc-btn calc-btn-secondary py-3" data-cmd="%">%</button>
+                            <button class="calc-btn calc-btn-secondary py-3" data-cmd="clear" style="color: #ef4444;">AC</button>
+                            <button class="calc-btn calc-btn-secondary py-3" data-cmd="backspace" style="color: #f59e0b;"><i class="fas fa-backspace"></i></button>
+                            <button class="calc-btn calc-btn-secondary py-3 hidden md:flex" data-cmd="integrate">∫</button>
+
+                            <button class="calc-btn py-4" data-cmd="7">7</button>
+                            <button class="calc-btn py-4" data-cmd="8">8</button>
+                            <button class="calc-btn py-4" data-cmd="9">9</button>
+                            <button class="calc-btn calc-btn-secondary py-4 text-xl" data-cmd="/">÷</button>
+                            <button class="calc-btn calc-btn-secondary py-4 text-xl" data-cmd="solve">Solve</button>
+                            <button class="calc-btn calc-btn-secondary py-4 hidden md:flex" data-cmd="simplify">Simp</button>
+
+                            <button class="calc-btn py-4" data-cmd="4">4</button>
+                            <button class="calc-btn py-4" data-cmd="5">5</button>
+                            <button class="calc-btn py-4" data-cmd="6">6</button>
+                            <button class="calc-btn calc-btn-secondary py-4 text-xl" data-cmd="*">×</button>
+                            <button class="calc-btn calc-btn-secondary py-4" data-cmd="x">x</button>
+                            <button class="calc-btn calc-btn-secondary py-4 hidden md:flex" data-cmd="y">y</button>
+
+                            <button class="calc-btn py-4" data-cmd="1">1</button>
+                            <button class="calc-btn py-4" data-cmd="2">2</button>
+                            <button class="calc-btn py-4" data-cmd="3">3</button>
+                            <button class="calc-btn calc-btn-secondary py-4 text-xl" data-cmd="-">−</button>
+                            <button class="calc-btn calc-btn-secondary py-4 text-sm" data-cmd="store">Store</button>
+                            <button class="calc-btn calc-btn-secondary py-4 hidden md:flex" data-cmd=",">,</button>
+
+                            <button class="calc-btn py-4 col-span-2" data-cmd="0">0</button>
+                            <button class="calc-btn py-4" data-cmd=".">.</button>
+                            <button class="calc-btn calc-btn-secondary py-4 text-xl" data-cmd="+">+</button>
+                            <button class="calc-btn calc-btn-primary py-4 col-span-1 md:col-span-2 text-2xl" data-cmd="=">=</button>
+                        </div>
+                    </div>
+
+                    <!-- Graphing Workspace (Hidden initially) -->
+                    <div id="sshihabb007_ws_graphing" class="workspace-panel glass-panel p-4 md:p-6 hidden absolute inset-0 z-10 flex flex-col">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-bold text-primary"><i class="fas fa-chart-line mr-2"></i> 2D Plotter</h3>
+                            <button id="shihab_plotBtn" class="btn btn-primary px-4 py-2">Plot Displayed Equation</button>
+                        </div>
+                        <div id="mehedi_plotArea" class="flex-grow bg-white rounded-lg overflow-hidden flex items-center justify-center">
+                            <!-- Function Plot renders here -->
+                            <span class="text-gray-400 font-medium">Rendered Plot</span>
+                        </div>
+                    </div>
+
+                    <!-- Matrix Workspace (Hidden initially) -->
+                    <div id="shihab_ws_matrix" class="workspace-panel glass-panel p-4 md:p-6 hidden absolute inset-0 z-10 flex flex-col overflow-y-auto custom-scroll">
+                        <h3 class="text-xl font-bold text-primary mb-4"><i class="fas fa-th mr-2"></i> Matrix Operations</h3>
+                        <p class="text-txtmuted mb-4">Input matrices using Math.js syntax: `[1, 2; 3, 4]`.</p>
+                        <div class="grid grid-cols-2 gap-4">
+                            <button class="calc-btn calc-btn-secondary py-3" data-cmd="det">Determinant</button>
+                            <button class="calc-btn calc-btn-secondary py-3" data-cmd="inv">Inverse</button>
+                            <button class="calc-btn calc-btn-secondary py-3" data-cmd="transpose">Transpose</button>
+                            <button class="calc-btn calc-btn-secondary py-3" data-cmd="cross">Cross Product</button>
+                        </div>
+                    </div>
+
+                    <!-- Programmer Workspace (Hidden initially) -->
+                    <div id="mehedi_ws_programmer" class="workspace-panel glass-panel p-4 md:p-6 hidden absolute inset-0 z-10 flex flex-col">
+                        <h3 class="text-xl font-bold text-primary mb-4"><i class="fas fa-code mr-2"></i> Programmer Tools</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="space-y-4">
+                                <div class="bg-dark p-3 rounded border border-brd">
+                                    <span class="text-xs text-txtmuted">HEX</span>
+                                    <div id="shihab_progHex" class="text-lg font-mono">0</div>
+                                </div>
+                                <div class="bg-dark p-3 rounded border border-brd">
+                                    <span class="text-xs text-txtmuted">DEC</span>
+                                    <div id="shihab_progDec" class="text-lg font-mono">0</div>
+                                </div>
+                                <div class="bg-dark p-3 rounded border border-brd">
+                                    <span class="text-xs text-txtmuted">OCT</span>
+                                    <div id="shihab_progOct" class="text-lg font-mono">0</div>
+                                </div>
+                                <div class="bg-dark p-3 rounded border border-brd">
+                                    <span class="text-xs text-txtmuted">BIN</span>
+                                    <div id="shihab_progBin" class="text-lg font-mono">0</div>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-3">
+                                <button class="calc-btn calc-btn-secondary py-3" data-cmd="bitAnd">AND</button>
+                                <button class="calc-btn calc-btn-secondary py-3" data-cmd="bitOr">OR</button>
+                                <button class="calc-btn calc-btn-secondary py-3" data-cmd="bitXor">XOR</button>
+                                <button class="calc-btn calc-btn-secondary py-3" data-cmd="bitNot">NOT</button>
+                                <button class="calc-btn calc-btn-secondary py-3" data-cmd="leftShift"><<</button>
+                                <button class="calc-btn calc-btn-secondary py-3" data-cmd="rightShift">>></button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Side Palette (Right) -->
+            <div class="lg:col-span-4 xl:col-span-3 flex flex-col space-y-6">
+                <!-- Constants Palette -->
+                <div class="glass-panel p-5 flex flex-col h-64 shadow-glass" data-aos="fade-left">
+                    <h3 class="text-lg font-bold mb-3 border-b border-brd pb-2"><i class="fas fa-atom text-primary mr-2"></i> Physical Constants</h3>
+                    <div class="flex-grow overflow-y-auto custom-scroll space-y-2 pr-2" id="sshihabb007_constantsList">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <!-- Variables Palette -->
+                <div class="glass-panel p-5 flex flex-col h-48 shadow-glass" data-aos="fade-left" data-aos-delay="100">
+                    <h3 class="text-lg font-bold mb-3 border-b border-brd pb-2"><i class="fas fa-superscript text-primary mr-2"></i> Saved Variables</h3>
+                    <div class="flex-grow overflow-y-auto custom-scroll space-y-2 pr-2" id="shihab_variablesList">
+                        <div class="flex justify-between items-center text-sm bg-dark p-2 rounded border border-brd">
+                            <span class="font-mono font-bold text-primary">Ans</span>
+                            <span class="font-mono" id="val_Ans">0</span>
+                        </div>
+                        <div class="flex justify-between items-center text-sm bg-dark p-2 rounded border border-brd">
+                            <span class="font-mono font-bold text-primary">x</span>
+                            <span class="font-mono" id="val_x">0</span>
+                        </div>
+                        <div class="flex justify-between items-center text-sm bg-dark p-2 rounded border border-brd">
+                            <span class="font-mono font-bold text-primary">y</span>
+                            <span class="font-mono" id="val_y">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- History Palette -->
+                <div class="glass-panel p-5 flex flex-col flex-grow min-h-[200px] shadow-glass" data-aos="fade-left" data-aos-delay="200">
+                    <div class="flex justify-between items-center mb-3 border-b border-brd pb-2">
+                        <h3 class="text-lg font-bold"><i class="fas fa-history text-primary mr-2"></i> History</h3>
+                        <button id="mehedi_clearHistory" class="text-xs text-txtmuted hover:text-red-500 transition"><i class="fas fa-trash"></i></button>
+                    </div>
+                    <div class="flex-grow overflow-y-auto custom-scroll space-y-3 pr-2" id="shihab_historyList">
+                        <!-- Populated by JS -->
+                        <div class="text-sm text-txtmuted text-center mt-4">History is empty</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <div id="site-footer"></div>
+
+    <!-- PWA Registration & Navigation Loaders -->
+    <script src="../js/load-components.js"></script>
+    <script src="../js/theme.js"></script>
+    <script src="../js/shihab-security.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('../sw.js').then(reg => {
+                    console.log('Service Worker registered!');
+                }).catch(err => console.log('Service Worker registration failed', err));
+            });
+        }
+    </script>
+    
+    <!-- Calculator Logic -->
+    <script src="script.js"></script>
+</body>
+</html>

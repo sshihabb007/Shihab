@@ -1,4 +1,4 @@
-const CACHE_NAME = 'sshihabb007-pwa-v13';
+const CACHE_NAME = 'sshihabb007-pwa-v14';
 const STATIC_ASSETS = [
     './',
     './css/style.css',
@@ -10,7 +10,17 @@ const STATIC_ASSETS = [
     './currency-converter/index.html',
     './currency-converter/style.css',
     './currency-converter/script.js',
-    './currency-converter/manifest.json'
+    './currency-converter/manifest.json',
+    './advanced-calculator/',
+    './advanced-calculator/index.html',
+    './advanced-calculator/script.js',
+    './advanced-calculator/manifest.json',
+    './advanced-calculator/vendor/mathquill/mathquill.css',
+    './advanced-calculator/vendor/mathquill/mathquill.js',
+    './advanced-calculator/vendor/math.js',
+    './advanced-calculator/vendor/jquery.min.js',
+    './advanced-calculator/vendor/function-plot.js',
+    './advanced-calculator/vendor/d3.min.js'
 ];
 
 self.addEventListener('install', (event) => {
