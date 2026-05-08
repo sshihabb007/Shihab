@@ -130,8 +130,28 @@ document.addEventListener('DOMContentLoaded', () => {
         // math.js angles handled globally via conversion if needed
     });
 
-    // Graphing Logic Removed
+    // 6. Toggle Scientific Pad
+    const shihab_toggleSciBtn = document.getElementById('shihab_toggleScientificBtn');
+    const mehedi_sciPad = document.getElementById('mehedi_advancedMathPad');
+    const shihab_sciIcon = document.getElementById('shihab_scientificIcon');
 
+    if (shihab_toggleSciBtn && mehedi_sciPad) {
+        shihab_toggleSciBtn.addEventListener('click', () => {
+            if (mehedi_sciPad.classList.contains('hidden')) {
+                mehedi_sciPad.classList.remove('hidden');
+                mehedi_sciPad.classList.add('grid');
+                shihab_sciIcon.classList.remove('fa-chevron-down');
+                shihab_sciIcon.classList.add('fa-chevron-up');
+                shihab_toggleSciBtn.classList.add('border-primary', 'text-primary');
+            } else {
+                mehedi_sciPad.classList.add('hidden');
+                mehedi_sciPad.classList.remove('grid');
+                shihab_sciIcon.classList.add('fa-chevron-down');
+                shihab_sciIcon.classList.remove('fa-chevron-up');
+                shihab_toggleSciBtn.classList.remove('border-primary', 'text-primary');
+            }
+        });
+    }
     // 7. Global Keyboard Numpad Support
     document.addEventListener('keydown', (e) => {
         // Block all alphabet characters except if modifier key is pressed (for copy/paste)
