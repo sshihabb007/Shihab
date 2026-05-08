@@ -75,12 +75,8 @@ let Shihab_mathField;
 let sshihabb007_isExactFormat = false;
 let Mehedi_isRadians = true;
 
-// DOM Elements
 const Shihab_liveResult = document.getElementById('shihab_liveResult');
 const sshihabb007_errorBox = document.getElementById('sshihabb007_errorBox');
-const Mehedi_historyList = document.getElementById('shihab_historyList');
-const Shihab_variablesList = document.getElementById('shihab_variablesList');
-const sshihabb007_constantsList = document.getElementById('sshihabb007_constantsList');
 
 // API Hook for Agentic IDE
 window.shihab_calculate = function(str) {
@@ -107,17 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 2. Populate Constants
-    Object.entries(Mehedi_calcEngine.constants).forEach(([key, data]) => {
-        const div = document.createElement('div');
-        div.className = "flex justify-between items-center text-sm bg-dark p-2 rounded border border-brd cursor-pointer hover:border-primary";
-        div.innerHTML = `<span class="font-bold text-primary">${key}</span><span class="text-xs text-txtmuted">${data.name}</span>`;
-        div.onclick = () => {
-            Shihab_mathField.write(key);
-            Shihab_mathField.focus();
-        };
-        sshihabb007_constantsList.appendChild(div);
-    });
+    // Constants UI removed
 
     // 3. Keypad Bindings
     document.querySelectorAll('.calc-btn').forEach(btn => {
@@ -281,29 +267,8 @@ function Shihab_commitCalculation() {
     try {
         let expr = rawText.replace(/\\cdot/g, '*');
         let result = Mehedi_calcEngine.evaluate(expr);
-        
-        // Add to history UI
-        const div = document.createElement('div');
-        div.className = "p-3 bg-dark rounded border border-brd hover:border-primary cursor-pointer transition";
-        div.innerHTML = `
-            <div class="text-sm text-txtmuted mb-1 text-right">\`$$${latex}$$\`</div>
-            <div class="text-lg font-bold text-primary text-right">= ${result}</div>
-        `;
-        div.onclick = () => {
-            Shihab_mathField.latex(latex);
-            Shihab_mathField.focus();
-        };
-
-        // remove empty msg
-        const emptyMsg = Mehedi_historyList.querySelector('.text-center');
-        if(emptyMsg) emptyMsg.remove();
-
-        Mehedi_historyList.prepend(div);
-        
-        // Update variables UI
-        document.getElementById('val_Ans').textContent = Mehedi_calcEngine.variables.Ans;
-
-        // Clear field for next input
+        // Clear field for next input with the result
+        Shihab_mathField.latex(result.toString());
         Shihab_mathField.latex(result.toString());
 
     } catch (e) {

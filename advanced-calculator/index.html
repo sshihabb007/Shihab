@@ -240,11 +240,11 @@
             </p>
         </div>
 
-        <!-- Bento Dashboard Layout -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 flex-grow">
+        <!-- Main Calculator Layout -->
+        <div class="flex-grow flex justify-center w-full">
             
-            <!-- Main Calculator Area (Left/Center) -->
-            <div class="lg:col-span-8 xl:col-span-9 flex flex-col space-y-6">
+            <!-- Main Calculator Area -->
+            <div class="w-full max-w-3xl flex flex-col space-y-6">
                 
                 <!-- Display Shell -->
                 <div class="glass-panel p-6 flex flex-col justify-end min-h-[160px] relative shadow-glass overflow-hidden" data-aos="zoom-in">
@@ -329,48 +329,6 @@
                         </div>
                     </div>
 
-                </div>
-            </div>
-
-            <!-- Side Palette (Right) -->
-            <div class="lg:col-span-4 xl:col-span-3 flex flex-col space-y-6">
-                <!-- Constants Palette -->
-                <div class="glass-panel p-5 flex flex-col h-64 shadow-glass" data-aos="fade-left">
-                    <h3 class="text-lg font-bold mb-3 border-b border-brd pb-2"><i class="fas fa-atom text-primary mr-2"></i> Physical Constants</h3>
-                    <div class="flex-grow overflow-y-auto custom-scroll space-y-2 pr-2" id="sshihabb007_constantsList">
-                        <!-- Populated by JS -->
-                    </div>
-                </div>
-
-                <!-- Variables Palette -->
-                <div class="glass-panel p-5 flex flex-col h-48 shadow-glass" data-aos="fade-left" data-aos-delay="100">
-                    <h3 class="text-lg font-bold mb-3 border-b border-brd pb-2"><i class="fas fa-superscript text-primary mr-2"></i> Saved Variables</h3>
-                    <div class="flex-grow overflow-y-auto custom-scroll space-y-2 pr-2" id="shihab_variablesList">
-                        <div class="flex justify-between items-center text-sm bg-dark p-2 rounded border border-brd">
-                            <span class="font-mono font-bold text-primary">Ans</span>
-                            <span class="font-mono" id="val_Ans">0</span>
-                        </div>
-                        <div class="flex justify-between items-center text-sm bg-dark p-2 rounded border border-brd">
-                            <span class="font-mono font-bold text-primary">x</span>
-                            <span class="font-mono" id="val_x">0</span>
-                        </div>
-                        <div class="flex justify-between items-center text-sm bg-dark p-2 rounded border border-brd">
-                            <span class="font-mono font-bold text-primary">y</span>
-                            <span class="font-mono" id="val_y">0</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- History Palette -->
-                <div class="glass-panel p-5 flex flex-col flex-grow min-h-[200px] shadow-glass" data-aos="fade-left" data-aos-delay="200">
-                    <div class="flex justify-between items-center mb-3 border-b border-brd pb-2">
-                        <h3 class="text-lg font-bold"><i class="fas fa-history text-primary mr-2"></i> History</h3>
-                        <button id="mehedi_clearHistory" class="text-xs text-txtmuted hover:text-red-500 transition"><i class="fas fa-trash"></i></button>
-                    </div>
-                    <div class="flex-grow overflow-y-auto custom-scroll space-y-3 pr-2" id="shihab_historyList">
-                        <!-- Populated by JS -->
-                        <div class="text-sm text-txtmuted text-center mt-4">History is empty</div>
-                    </div>
                 </div>
             </div>
 
