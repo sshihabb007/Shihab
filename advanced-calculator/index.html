@@ -232,7 +232,7 @@
         
         <!-- Header -->
         <div class="text-center space-y-2 mb-4" data-aos="fade-down">
-            <h1 class="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
+            <h1 class="text-2xl sm:text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
                 Advanced Scientific Calculator
             </h1>
             <p class="font-medium text-txtmuted">
@@ -277,56 +277,55 @@
                     
                     <!-- Scientific Keypad Workspace -->
                     <div id="mehedi_ws_scientific" class="workspace-panel glass-panel p-4 md:p-6 transition-opacity duration-300">
-                        <!-- Keypad Grid -->
-                        <div class="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 gap-3">
-                            <!-- Advanced Math Row -->
-                            <button class="calc-btn calc-btn-secondary py-3" data-cmd="sin">sin</button>
-                            <button class="calc-btn calc-btn-secondary py-3" data-cmd="cos">cos</button>
-                            <button class="calc-btn calc-btn-secondary py-3" data-cmd="tan">tan</button>
-                            <button class="calc-btn calc-btn-secondary py-3" data-cmd="log">log</button>
-                            <button class="calc-btn calc-btn-secondary py-3" data-cmd="ln">ln</button>
-                            <button class="calc-btn calc-btn-secondary py-3 hidden md:flex" data-cmd="ans">Ans</button>
+                        <!-- Advanced Math Pad -->
+                        <div class="grid grid-cols-4 md:grid-cols-6 gap-2 mb-4">
+                            <button class="calc-btn calc-btn-secondary py-2 text-sm" data-cmd="sin">sin</button>
+                            <button class="calc-btn calc-btn-secondary py-2 text-sm" data-cmd="cos">cos</button>
+                            <button class="calc-btn calc-btn-secondary py-2 text-sm" data-cmd="tan">tan</button>
+                            <button class="calc-btn calc-btn-secondary py-2 text-sm" data-cmd="log">log</button>
+                            <button class="calc-btn calc-btn-secondary py-2 text-sm" data-cmd="ln">ln</button>
+                            <button class="calc-btn calc-btn-secondary py-2 text-sm hidden md:flex" data-cmd="ans">Ans</button>
 
-                            <button class="calc-btn calc-btn-secondary py-3" data-cmd="pi">π</button>
-                            <button class="calc-btn calc-btn-secondary py-3" data-cmd="e">e</button>
-                            <button class="calc-btn calc-btn-secondary py-3" data-cmd="sqrt">√</button>
-                            <button class="calc-btn calc-btn-secondary py-3" data-cmd="^">x^y</button>
-                            <button class="calc-btn calc-btn-secondary py-3" data-cmd="!">x!</button>
-                            <button class="calc-btn calc-btn-secondary py-3 hidden md:flex" data-cmd="derive">d/dx</button>
+                            <button class="calc-btn calc-btn-secondary py-2 text-sm" data-cmd="pi">π</button>
+                            <button class="calc-btn calc-btn-secondary py-2 text-sm" data-cmd="e">e</button>
+                            <button class="calc-btn calc-btn-secondary py-2 text-sm" data-cmd="sqrt">√</button>
+                            <button class="calc-btn calc-btn-secondary py-2 text-sm" data-cmd="^">x^y</button>
+                            <button class="calc-btn calc-btn-secondary py-2 text-sm" data-cmd="!">x!</button>
+                            <button class="calc-btn calc-btn-secondary py-2 text-sm hidden md:flex" data-cmd="derive">d/dx</button>
 
-                            <!-- Numeric Pad Starts -->
-                            <button class="calc-btn calc-btn-secondary py-3 sm:col-start-1 md:col-start-1" data-cmd="(">(</button>
-                            <button class="calc-btn calc-btn-secondary py-3" data-cmd=")">)</button>
-                            <button class="calc-btn calc-btn-secondary py-3" data-cmd="%">%</button>
-                            <button class="calc-btn calc-btn-secondary py-3" data-cmd="clear" style="color: #ef4444;">AC</button>
-                            <button class="calc-btn calc-btn-secondary py-3" data-cmd="backspace" style="color: #f59e0b;"><i class="fas fa-backspace"></i></button>
-                            <button class="calc-btn calc-btn-secondary py-3 hidden md:flex" data-cmd="integrate">∫</button>
+                            <button class="calc-btn calc-btn-secondary py-2 text-sm" data-cmd="(">(</button>
+                            <button class="calc-btn calc-btn-secondary py-2 text-sm" data-cmd=")">)</button>
+                            <button class="calc-btn calc-btn-secondary py-2 text-sm" data-cmd="%">%</button>
+                            <button class="calc-btn calc-btn-secondary py-2 text-sm" data-cmd="x">x</button>
+                            <button class="calc-btn calc-btn-secondary py-2 text-sm hidden md:flex" data-cmd="y">y</button>
+                            <button class="calc-btn calc-btn-secondary py-2 text-sm hidden md:flex" data-cmd="integrate">∫</button>
+                        </div>
 
-                            <button class="calc-btn py-4" data-cmd="7">7</button>
-                            <button class="calc-btn py-4" data-cmd="8">8</button>
-                            <button class="calc-btn py-4" data-cmd="9">9</button>
-                            <button class="calc-btn calc-btn-secondary py-4 text-xl" data-cmd="/">÷</button>
-                            <button class="calc-btn calc-btn-secondary py-4 text-xl" data-cmd="solve">Solve</button>
-                            <button class="calc-btn calc-btn-secondary py-4 hidden md:flex" data-cmd="simplify">Simp</button>
+                        <!-- Numeric Pad -->
+                        <div class="grid grid-cols-4 gap-2 md:gap-3">
+                            <button class="calc-btn calc-btn-secondary py-3 md:py-4 font-semibold" data-cmd="clear" style="color: #ef4444;">AC</button>
+                            <button class="calc-btn calc-btn-secondary py-3 md:py-4" data-cmd="backspace" style="color: #f59e0b;"><i class="fas fa-backspace"></i></button>
+                            <button class="calc-btn calc-btn-secondary py-3 md:py-4 font-semibold text-sm" data-cmd="store">Store</button>
+                            <button class="calc-btn calc-btn-secondary py-3 md:py-4 text-xl" data-cmd="/">÷</button>
 
-                            <button class="calc-btn py-4" data-cmd="4">4</button>
-                            <button class="calc-btn py-4" data-cmd="5">5</button>
-                            <button class="calc-btn py-4" data-cmd="6">6</button>
-                            <button class="calc-btn calc-btn-secondary py-4 text-xl" data-cmd="*">×</button>
-                            <button class="calc-btn calc-btn-secondary py-4" data-cmd="x">x</button>
-                            <button class="calc-btn calc-btn-secondary py-4 hidden md:flex" data-cmd="y">y</button>
+                            <button class="calc-btn py-3 md:py-4 text-xl font-bold" data-cmd="7">7</button>
+                            <button class="calc-btn py-3 md:py-4 text-xl font-bold" data-cmd="8">8</button>
+                            <button class="calc-btn py-3 md:py-4 text-xl font-bold" data-cmd="9">9</button>
+                            <button class="calc-btn calc-btn-secondary py-3 md:py-4 text-xl" data-cmd="*">×</button>
 
-                            <button class="calc-btn py-4" data-cmd="1">1</button>
-                            <button class="calc-btn py-4" data-cmd="2">2</button>
-                            <button class="calc-btn py-4" data-cmd="3">3</button>
-                            <button class="calc-btn calc-btn-secondary py-4 text-xl" data-cmd="-">−</button>
-                            <button class="calc-btn calc-btn-secondary py-4 text-sm" data-cmd="store">Store</button>
-                            <button class="calc-btn calc-btn-secondary py-4 hidden md:flex" data-cmd=",">,</button>
+                            <button class="calc-btn py-3 md:py-4 text-xl font-bold" data-cmd="4">4</button>
+                            <button class="calc-btn py-3 md:py-4 text-xl font-bold" data-cmd="5">5</button>
+                            <button class="calc-btn py-3 md:py-4 text-xl font-bold" data-cmd="6">6</button>
+                            <button class="calc-btn calc-btn-secondary py-3 md:py-4 text-xl" data-cmd="-">−</button>
 
-                            <button class="calc-btn py-4 col-span-2" data-cmd="0">0</button>
-                            <button class="calc-btn py-4" data-cmd=".">.</button>
-                            <button class="calc-btn calc-btn-secondary py-4 text-xl" data-cmd="+">+</button>
-                            <button class="calc-btn calc-btn-primary py-4 col-span-1 md:col-span-2 text-2xl" data-cmd="=">=</button>
+                            <button class="calc-btn py-3 md:py-4 text-xl font-bold" data-cmd="1">1</button>
+                            <button class="calc-btn py-3 md:py-4 text-xl font-bold" data-cmd="2">2</button>
+                            <button class="calc-btn py-3 md:py-4 text-xl font-bold" data-cmd="3">3</button>
+                            <button class="calc-btn calc-btn-secondary py-3 md:py-4 text-xl" data-cmd="+">+</button>
+
+                            <button class="calc-btn py-3 md:py-4 text-xl font-bold col-span-2" data-cmd="0">0</button>
+                            <button class="calc-btn py-3 md:py-4 text-xl font-bold" data-cmd=".">.</button>
+                            <button class="calc-btn calc-btn-primary py-3 md:py-4 text-2xl" data-cmd="=">=</button>
                         </div>
                     </div>
 
