@@ -127,15 +127,27 @@
             font-size: 2rem !important;
             color: var(--text-main) !important;
             background: transparent !important;
-            padding: 0 !important;
+            padding: 0.2rem 0.5rem !important;
+            min-height: 3.5rem;
+            display: flex !important;
+            align-items: center;
+            justify-content: flex-end;
         }
         
         .mq-root-block {
-            padding: 0.5rem !important;
+            padding: 0 !important;
+            width: 100%;
+            text-align: right;
         }
         
         .mq-cursor {
-            border-left-color: var(--primary-color) !important;
+            border-left: 3px solid var(--primary-color) !important;
+            animation: mq-blink 1s step-end infinite;
+        }
+        
+        @keyframes mq-blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
         }
 
         /* Custom Scrollbar for side palette */
@@ -203,8 +215,8 @@
                     </div>
 
                     <!-- Input MathQuill Container -->
-                    <div class="w-full flex justify-end items-end overflow-x-auto custom-scroll pb-2 mt-8">
-                        <span id="mehedi_mathInput" class="text-right min-w-[50%]"></span>
+                    <div class="w-full overflow-x-auto custom-scroll pb-2 mt-8">
+                        <span id="mehedi_mathInput"></span>
                     </div>
 
                     <!-- Live Result / Error Output -->
