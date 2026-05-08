@@ -171,20 +171,80 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 6. Graphing Plot Button
     document.getElementById('shihab_plotBtn').addEventListener('click', () => {
-        const expr = Shihab_mathField.text(); // use text for math.js/function-plot
+        let expr = Shihab_mathField.text(); // use text for math.js/function-plot
         if(!expr) return;
+        
+        // Remove MathQuill specific text artifacts if any
+        expr = expr.replace(/\\cdot/g, '*');
+        
         try {
+            // Function-plot requires target to be clear or it appends multiple SVGs
+            const plotArea = document.getElementById('mehedi_plotArea');
+            // Remove previous SVG if exists
+            const existingSvg = plotArea.querySelector('svg');
+            if (existingSvg) existingSvg.remove();
+            
             window.Mehedi_plotInst = functionPlot({
                 target: '#mehedi_plotArea',
-                width: document.getElementById('mehedi_plotArea').clientWidth,
+                width: plotArea.clientWidth || 600,
                 height: 300,
                 grid: true,
                 data: [{
                     fn: expr
                 }]
             });
+            const placeholder = document.querySelector('#mehedi_plotArea span');
+            if(placeholder) placeholder.style.display = 'none';
         } catch(e) {
             alert("Could not plot: " + e.message);
+        }
+    });
+
+    // 7. Global Keyboard Numpad Support
+    document.addEventListener('keydown', (e) => {
+        const isMqFocused = document.activeElement && (document.activeElement.tagName === 'TEXTAREA' || document.activeElement.tagName === 'INPUT');
+        
+        // Map physical keys to calculator commands
+        const key = e.key;
+        let cmd = '';
+        if (key >= '0' && key <= '9') cmd = key;
+        else if (key === '.') cmd = '.';
+        else if (key === '+') cmd = '+';
+        else if (key === '-') cmd = '-';
+        else if (key === '*' || key === 'x') cmd = '*';
+        else if (key === '/') cmd = '/';
+        else if (key === '(') cmd = '(';
+        else if (key === ')') cmd = ')';
+        else if (key === '^') cmd = '^';
+        else if (key === '%') cmd = '%';
+        else if (key === 'Enter' || key === '=') cmd = '=';
+        else if (key === 'Backspace') cmd = 'backspace';
+        else if (key === 'Escape') cmd = 'clear';
+
+        if (cmd) {
+            const btn = document.querySelector(`.calc-btn[data-cmd="${cmd}"]`);
+            if (btn) {
+                // Animate the on-screen button
+                btn.style.transform = 'scale(0.95)';
+                btn.style.backgroundColor = 'var(--primary-color)';
+                btn.style.color = '#fff';
+                setTimeout(() => {
+                    btn.style.transform = '';
+                    btn.style.backgroundColor = '';
+                    btn.style.color = '';
+                }, 150);
+            }
+            
+            // If the math input isn't focused, force focus and handle the key so it works globally
+            if (!isMqFocused) {
+                 e.preventDefault();
+                 Shihab_mathField.focus();
+                 sshihabb007_handleKeypad(cmd);
+            } else if (key === 'Escape') {
+                 // Escape clears field even if focused
+                 e.preventDefault();
+                 sshihabb007_handleKeypad('clear');
+            }
         }
     });
 

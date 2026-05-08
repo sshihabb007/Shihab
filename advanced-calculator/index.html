@@ -165,6 +165,10 @@
             background: var(--primary-color);
         }
         
+        .mode-tab {
+            color: var(--text-main);
+        }
+        
         .mode-tab.active {
             background: var(--primary-color);
             color: white;
@@ -296,11 +300,10 @@
                     <div id="sshihabb007_ws_graphing" class="workspace-panel glass-panel p-4 md:p-6 hidden absolute inset-0 z-10 flex flex-col">
                         <div class="flex justify-between items-center mb-4">
                             <h3 class="text-xl font-bold text-primary"><i class="fas fa-chart-line mr-2"></i> 2D Plotter</h3>
-                            <button id="shihab_plotBtn" class="btn btn-primary px-4 py-2">Plot Displayed Equation</button>
+                            <button id="shihab_plotBtn" class="calc-btn calc-btn-primary px-4 py-2 text-sm md:text-base">Plot Equation</button>
                         </div>
-                        <div id="mehedi_plotArea" class="flex-grow bg-white rounded-lg overflow-hidden flex items-center justify-center">
-                            <!-- Function Plot renders here -->
-                            <span class="text-gray-400 font-medium">Rendered Plot</span>
+                        <div id="mehedi_plotArea" class="flex-grow bg-white rounded-lg overflow-hidden flex items-center justify-center relative w-full">
+                            <span class="text-gray-400 font-medium absolute">Rendered Plot</span>
                         </div>
                     </div>
 
