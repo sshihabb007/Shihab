@@ -304,12 +304,13 @@ function Shihab_updateLiveResult() {
     }
 
     try {
-        let result = Mehedi_calcEngine.evaluate(rawText);
+        let expr = rawText.replace(/\\cdot/g, '*');
+        let result = Mehedi_calcEngine.evaluate(expr);
         Shihab_liveResult.textContent = "= " + result;
         sshihabb007_errorBox.style.opacity = '0';
     } catch (e) {
         Shihab_liveResult.textContent = '';
-        sshihabb007_errorBox.style.opacity = '1';
+        sshihabb007_errorBox.style.opacity = '0'; // CHANGED: Don't show error while user is actively typing!
     }
 }
 
@@ -320,7 +321,8 @@ function Shihab_commitCalculation() {
     if (!rawText.trim()) return;
 
     try {
-        let result = Mehedi_calcEngine.evaluate(rawText);
+        let expr = rawText.replace(/\\cdot/g, '*');
+        let result = Mehedi_calcEngine.evaluate(expr);
         
         // Add to history UI
         const div = document.createElement('div');
