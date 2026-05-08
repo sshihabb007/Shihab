@@ -64,7 +64,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let sshihabb007_wavesurfer = null;
     
     // FFmpeg Engine State
-    const { createFFmpeg, fetchFile } = FFmpeg;
+    const { FFmpeg } = FFmpegWASM;
+    const { fetchFile } = FFmpegUtil;
     let Mehedi_ffmpegInstance = null;
     let Shihab_isLoaded = false;
     let Shihab_loadPromise = null;
@@ -97,13 +98,14 @@ document.addEventListener('DOMContentLoaded', () => {
         Mehedi_audioProgressContainer.classList.remove('hidden');
         
         if (!Mehedi_ffmpegInstance) {
-            Mehedi_ffmpegInstance = createFFmpeg({
-                log: true,
-                corePath: new URL('ffmpeg-core.js', window.location.href).href
+            Mehedi_ffmpegInstance = new FFmpeg();
+            
+            Mehedi_ffmpegInstance.on('log', ({ message }) => {
+                console.log(message);
             });
 
-            Mehedi_ffmpegInstance.setProgress(({ ratio }) => {
-                const sshihabb007_percent = Math.round(ratio * 100);
+            Mehedi_ffmpegInstance.on('progress', ({ progress }) => {
+                const sshihabb007_percent = Math.round(progress * 100);
                 sshihabb007_audioProgressPercent.textContent = `${sshihabb007_percent}%`;
                 Mehedi_audioProgressBar.style.width = `${sshihabb007_percent}%`;
             });
@@ -112,7 +114,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!Shihab_isLoaded) {
             if (!Shihab_loadPromise) {
                 Shihab_audioStatusText.textContent = "Loading FFmpeg Engine...";
-                Shihab_loadPromise = Mehedi_ffmpegInstance.load().then(() => {
+                Shihab_loadPromise = Mehedi_ffmpegInstance.load({
+                    coreURL: new URL('ffmpeg-core.js', window.location.href).href,
+                    wasmURL: new URL('ffmpeg-core.wasm', window.location.href).href
+                }).then(() => {
                     Shihab_isLoaded = true;
                     Shihab_audioStatusText.textContent = "Engine Ready";
                     sshihabb007_audioProgressPercent.textContent = "";
@@ -213,7 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const sshihabb007_inputName = 'Mehedi_input.' + Shihab_payload.Mehedi_file.name.split('.').pop();
                 const Shihab_outputName = 'Shihab_output.' + Shihab_payload.Shihab_format;
 
-                Mehedi_ffmpegInstance.FS('writeFile', sshihabb007_inputName, await fetchFile(Shihab_payload.Mehedi_file));
+                await Mehedi_ffmpegInstance.writeFile(sshihabb007_inputName, await fetchFile(Shihab_payload.Mehedi_file));
 
                 const Mehedi_command = ['-i', sshihabb007_inputName];
 
@@ -238,9 +243,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 Mehedi_command.push(Shihab_outputName);
 
-                await Mehedi_ffmpegInstance.run(...Mehedi_command);
+                await Mehedi_ffmpegInstance.exec(Mehedi_command);
 
-                const sshihabb007_data = Mehedi_ffmpegInstance.FS('readFile', Shihab_outputName);
+                const sshihabb007_data = await Mehedi_ffmpegInstance.readFile(Shihab_outputName);
                 const Mehedi_blob = new Blob([sshihabb007_data.buffer], { type: 'audio/' + Shihab_payload.Shihab_format });
                 
                 Mehedi_audioProgressContainer.classList.add('hidden');
@@ -255,8 +260,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 Mehedi_downloadBtn.classList.remove('hidden');
                 Shihab_convertAudioBtn.classList.remove('hidden');
 
-                Mehedi_ffmpegInstance.FS('unlink', sshihabb007_inputName);
-                Mehedi_ffmpegInstance.FS('unlink', Shihab_outputName);
+                await Mehedi_ffmpegInstance.deleteFile(sshihabb007_inputName);
+                await Mehedi_ffmpegInstance.deleteFile(Shihab_outputName);
             } catch (sshihabb007_error) {
                 Shihab_audioStatusText.textContent = "Error: " + sshihabb007_error.message;
                 Mehedi_audioProgressBar.classList.replace('from-red-600', 'from-red-800');
