@@ -1,4 +1,4 @@
-const CACHE_NAME = 'sshihabb007-pwa-v12';
+const CACHE_NAME = 'sshihabb007-pwa-v13';
 const STATIC_ASSETS = [
     './',
     './css/style.css',
